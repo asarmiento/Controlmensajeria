@@ -1,0 +1,169 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 11-26-2014, 10:39:37 AM
+    Author     : Sistemas Amigables
+*/
+
+.ocultar{
+    display: none;
+}
+
+.right {
+	float:right;
+	margin-right:40px;
+}
+
+.menu-cliente {
+	padding:5px;
+	background-color:#f1f1f1;
+}
+
+.menu-cliente li{
+	display:block;
+}
+
+.boton-cliente {
+	background-color:#428bca;
+	color:#fff;
+	padding:10px 0px 9px 10px;
+	max-width: 300px;
+	border-radius:4px;
+	margin-bottom:1px;
+}
+
+.menu-tittle {
+	font-weight:bold;
+	padding:8px 0px;
+}
+
+.box-colums{
+	margin:0 auto;
+	width:800px;
+}
+
+
+
+.box-lef-login {
+	width:50%;
+	float:left;
+	margin-top:25px;
+}
+
+
+.box-right-login {
+	float:left;
+	width:50%;
+}
+
+
+
+.titulo-bienvenido {
+	color: #0d6672;
+    font-size: 28px;
+	font-weight:normal;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+
+.texto-inicio-sesion{
+	color: #000;
+    font-size: 14px;
+    margin-top: 20px;
+	font-weight:normal;
+	font-family:Arial;
+	margin-bottom:10px;
+}
+
+
+.box-login {
+	clear:both;
+	padding:0px 30px 20px 20px;
+	width:300px;
+	margin:0 auto;
+	background-color:#f1f1f1;
+	height:auto;
+	border:1px solid #D5D5D5;
+	text-align:center;
+	font-family:Arial;
+	font-size:12px;
+}
+
+
+
+.box-login input[type="text"] {
+	width:100%;
+	height:37px;
+	border:1px solid #B9B9B9;
+	font-size:15px;
+	padding-left:10px;
+}
+
+
+.box-login input[type="password"] {
+	width:100%;
+	height:35px;
+	border:1px solid #B9B9B9;
+	margin-bottom:20px;
+	padding-left:10px;
+}
+
+
+.box-login input[type="submit"]{
+	width:140px;
+	height:39px;
+	background-image:url(../img/bg-botoms-login.png);
+	border-width:1px;
+	border-style:solid;
+	border-color:#000;
+	color:#FFFFFF;
+	margin-right:15px;
+	border-radius:2px;
+	padding:8px 10px 10px 10px;
+	font-weight:bold;
+	font-family:Arial;
+	text-shadow:1px 1px 0px #000000
+}
+
+
+
+.box-login input[type="reset"]{
+	width:140px;
+	height:39px;
+	background-image:url(../img/bg-botoms-login.png);
+	border-width:1px;
+	border-style:solid;
+	border-color:#000;
+	color:#FFFFFF;
+	border-radius:2px;
+	font-weight:bold;
+	font-family:Arial;
+	text-shadow:1px 1px 0px #000000;
+	padding:8px 10px 10px 10px;
+}
+
+
+.box-login-text {
+	padding:25px 20px 5px 20px;
+}
+
+
+.box-login input[type="text"]:focus, input[type="password"]:focus {
+	box-shadow:0px 0px 8px #DCDCDC inset;
+}
+
+
+.candado {
+	background: url(../img/img-candadito.png);
+	width:55px;
+	height:70px;
+	margin:0 auto;
+	margin-bottom:10px;
+}
+
+
+
