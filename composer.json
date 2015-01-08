@@ -3,10 +3,15 @@
 	"description": "The Laravel Framework.",
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
-	"require": {
+	"require-dev": {
+        "way/generators": "~2.0"
+    },
+    "require": {
 		"laravel/framework": "4.2.*",
                 "maatwebsite/excel": "1.*",
-                "thujohn/pdf": "dev-master"
+                "thujohn/pdf": "dev-master",
+                "anouar/fpdf": "dev-master"
+        
 	},
 	"autoload": {
 		"classmap": [

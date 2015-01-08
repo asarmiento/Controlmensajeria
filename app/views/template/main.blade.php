@@ -11,8 +11,10 @@
     <div class="menu-cliente" id=""> 
 
     <div class="menu-tittle">| Clientes ::
-    </div>           
-    <ul class="nav">   
+    </div>   
+        
+    <ul class="nav">  
+         @if(Auth::user()->tipos_id=='1') 
         <li class="dropdown">                  
             <a href="#" class="boton-cliente" data-toggle="dropdown">Banco Occidente<span class="caret"></span></a>  
             <ul class="dropdown-menu" role="menu">                        
@@ -77,10 +79,7 @@
                 <li><a>{{ HTML::link('/claros/c46tv', 'Ciclo C-46 TV') }}</a></li>
                 <li><a>{{ HTML::link('/claros/c46movil', 'Ciclo C-46 Movil') }}</a></li>   
             </ul>               
-        </li>                                 
-
-                             
-
+        </li>    
         <li class="dropdown">   
             <a href="#" class="boton-cliente" data-toggle="dropdown">Usuarios<span class="caret"></span></a>                    
             <ul class="dropdown-menu" role="menu">                        
@@ -94,8 +93,27 @@
                 <li>{{ HTML::link('/setup/ligar', 'Relacionar Estado Observación') }}</li>  
                 <li>{{ HTML::link('/logout', 'Cerrar sesión') }}</li>       
             </ul>              
-        </li>           
+        </li>   
+         @endif
+         @if(Auth::user()->tipos_id=='3') 
+        <li class="dropdown">   
+            <a href="#" class="boton-cliente" data-toggle="dropdown">Claro<span class="caret"></span></a>   
+            <ul class="dropdown-menu" role="menu">
+                <li><a>{{ HTML::link('/claros/', 'Administración') }}</a></li>
+                <li><a>{{ HTML::link('/claros/c48', 'Ciclo C-48') }}</a></li>
+                <li><a>{{ HTML::link('/claros/c46tv', 'Ciclo C-46 TV') }}</a></li>
+                <li><a>{{ HTML::link('/claros/c46movil', 'Ciclo C-46 Movil') }}</a></li>   
+            </ul>               
+        </li>    
+        <<li class="dropdown">                   
+            <a href="#" class="boton-cliente" data-toggle="dropdown">Opciones&nbsp;<span class=" glyphicon glyphicon-cog"></span></a>   
+            <ul class="dropdown-menu" role="menu">    
+                <li>{{ HTML::link('/logout', 'Cerrar sesión') }}</li>       
+            </ul>              
+        </li>   
+         @endif
     </ul>     
+       
 </div><!-- /.navbar-collapse -->   
 
 
