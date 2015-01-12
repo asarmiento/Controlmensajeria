@@ -95,7 +95,7 @@
             </ul>              
         </li>   
          @endif
-         @if(Auth::user()->tipos_id=='3') 
+         @if(Auth::user()->tipos_id=='3' OR Auth::user()->tipos_id=='2') 
         <li class="dropdown">   
             <a href="#" class="boton-cliente" data-toggle="dropdown">Claro<span class="caret"></span></a>   
             <ul class="dropdown-menu" role="menu">

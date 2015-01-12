@@ -75,7 +75,7 @@
     <thead>
         <tr>
             <th width="57">{{utf8_encode('#')}}</th>
-            <th width="211">{{utf8_encode('Código')}}</th>
+            <th width="211">{{utf8_encode('Cï¿½digo')}}</th>
             <th width="157">Nombre</th>
             <th width="157">Tipo Cliente</th>
             <th width="182">Estado</th>
@@ -93,7 +93,7 @@
             <td>{{$i}}</td>
             <td>{{($datos->codigo)}}</td>
             <td>{{($datos->name_cliente)}}</td>
-            <td>{{($datos->tipo_cliente)}}</td>
+            <td></td>
             <!-- Estado --> 
             {{Form::input('hidden','empresa',$datos->empresas_id,array('id'=>'empresa'))}}
             {{Form::input('hidden','estadoj',$datos->estado_id,array('id'=>'estadoj_'.$datos->id))}}

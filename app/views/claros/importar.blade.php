@@ -12,6 +12,12 @@ $mes = array(
     '10' => 'Octubre-2014',
     '11' => 'Noviembre-2014',
     '12' => 'Diciembre-2014',
+    '1' => 'Enero-2015',
+    '2' => 'Febrero-2015',
+    '3' => 'Marzo-2015',
+    '4' => 'Abril-2015',
+    '5' => 'Mayo-2015',
+    '6' => 'Junio-2015',
 );
 ?>
 @section('title')
