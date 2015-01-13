@@ -40,7 +40,7 @@ class ClaroController extends BaseController {
 
     public function postC48() {
         $data = DB::table('ciclos')->where('id', 7)->get();
- if (isset($_POST['buscar'])) {
+        if (isset($_POST['buscar'])) {
             $buscar = htmlspecialchars($_POST['buscar']);
             if ((Session::get('ciudad'))): $ciudad = Session::get('ciudad');
             else: $ciudad = "";
@@ -51,7 +51,7 @@ class ClaroController extends BaseController {
 
             if (empty($estado) && empty($ciudad)):
                 $paginacion = DB::table("datos_empresas")
-                        ->select('datos_empresas.id', 'datos_empresas.tipo_cliente','datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                        ->select('datos_empresas.id', 'datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
                         ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
                         ->where('empresas_id', 1)
                         ->where('ciclo_id', 7)
@@ -151,7 +151,7 @@ class ClaroController extends BaseController {
                     ->paginate(50);
         } else {
             $paginacion = DB::table("datos_empresas")
-                    ->select('datos_empresas.id', 'datos_empresas.tipo_cliente','datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                    ->select('datos_empresas.id', 'datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
                     ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
                     ->where('empresas_id', 1)
                     ->where('ciclo_id', 7)
@@ -170,7 +170,7 @@ class ClaroController extends BaseController {
         $data = DB::table('ciclos')->where('id', 1)->get();
 
         $paginacion = DB::table("datos_empresas")
-                ->select('datos_empresas.id','datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                ->select('datos_empresas.id', 'datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
                 ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
                 ->where('empresas_id', 1)
                 ->where('ciclo_id', 1)
@@ -198,7 +198,7 @@ class ClaroController extends BaseController {
 
             if (empty($estado) && empty($ciudad)):
                 $paginacion = DB::table("datos_empresas")
-                        ->select('datos_empresas.id','datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                        ->select('datos_empresas.id', 'datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
                         ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
                         ->where('empresas_id', 1)
                         ->where('ciclo_id', 1)
@@ -248,7 +248,7 @@ class ClaroController extends BaseController {
                         ->orwhere('fecha_entregado', 'LIKE', '%' . $buscar . '%')
                         ->orderBy('id', 'DESC')
                         ->paginate(50);
-else:
+            else:
                 $paginacion = DB::table("datos_empresas")
                         ->where('empresas_id', 1)
                         ->where('ciclo_id', 1)
@@ -298,7 +298,7 @@ else:
                     ->paginate(50);
         } else {
             $paginacion = DB::table("datos_empresas")
-                    ->select('datos_empresas.id', 'datos_empresas.tipo_cliente','datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                    ->select('datos_empresas.id', 'datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
                     ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
                     ->where('empresas_id', 1)
                     ->where('ciclo_id', 1)
@@ -315,33 +315,33 @@ else:
 
     public function getC46movil() {
         $data = DB::table('ciclos')->where('id', 6)->get();
-          if ((Session::get('ciudad'))): $ciudad = Session::get('ciudad');
-            else: $ciudad = "";
-            endif;
-            if ((Session::get('estado'))): $estado = Session::get('estado');
-            else: $estado = "";
-            endif;
-          if($ciudad>0&&$estado>0): 
+        if ((Session::get('ciudad'))): $ciudad = Session::get('ciudad');
+        else: $ciudad = "";
+        endif;
+        if ((Session::get('estado'))): $estado = Session::get('estado');
+        else: $estado = "";
+        endif;
+        if ($ciudad > 0 && $estado > 0):
             $paginacion = DB::table("datos_empresas")
-                ->select('datos_empresas.id', 'datos_empresas.codigo', 'datos_empresas.name_cliente',  'datos_empresas.tipo_cliente','datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
-                ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
-                ->where('empresas_id', 1)
-                ->where('ciclo_id', 6)
-                ->where('contador', ($data[0]->contador - 1))
-                ->where('estado_id', '=', $estado)
-                        ->where('ciudad_id', '=', $ciudad)
-                        ->orderBy('name', 'ASC')
-                ->paginate(50);
-          else:
-              $paginacion = DB::table("datos_empresas")
-                ->select('datos_empresas.id', 'datos_empresas.codigo', 'datos_empresas.name_cliente',  'datos_empresas.tipo_cliente','datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
-                ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
-                ->where('empresas_id', 1)
-                ->where('ciclo_id', 6)
-                ->where('contador', ($data[0]->contador - 1))
-                ->orderBy('name', 'ASC')
-                ->paginate(50);
-          endif;
+                    ->select('datos_empresas.id', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.tipo_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                    ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
+                    ->where('empresas_id', 1)
+                    ->where('ciclo_id', 6)
+                    ->where('contador', ($data[0]->contador - 1))
+                    ->where('estado_id', '=', $estado)
+                    ->where('ciudad_id', '=', $ciudad)
+                    ->orderBy('name', 'ASC')
+                    ->paginate(50);
+        else:
+            $paginacion = DB::table("datos_empresas")
+                    ->select('datos_empresas.id', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.tipo_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                    ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
+                    ->where('empresas_id', 1)
+                    ->where('ciclo_id', 6)
+                    ->where('contador', ($data[0]->contador - 1))
+                    ->orderBy('name', 'ASC')
+                    ->paginate(50);
+        endif;
         $ciudad = array('all' => 'All');
         $drop = array('all' => 'All');
         $drop[] = DB::table('estados')->lists('name', 'id');
@@ -349,10 +349,10 @@ else:
         return View::make('claros.c46movil', array('resultado' => $paginacion, 'estado' => $drop, 'ciudad' => $ciudad));
     }
 
-    public function postC46movil() { 
+    public function postC46movil() {
         $data = DB::table('ciclos')->where('id', 6)->get();
-       
-        if (isset($_POST['buscar'])) { 
+
+        if (isset($_POST['buscar'])) {
             $buscar = htmlspecialchars($_POST['buscar']);
             if ((Session::get('ciudad'))): $ciudad = Session::get('ciudad');
             else: $ciudad = "";
@@ -360,10 +360,10 @@ else:
             if ((Session::get('estado'))): $estado = Session::get('estado');
             else: $estado = "";
             endif;
-            
-            if (($estado=='all') && ($ciudad=='all')):  
+
+            if (($estado == 'all') && ($ciudad == 'all')):
                 $paginacion = DB::table("datos_empresas")
-                        ->select('datos_empresas.id','datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                        ->select('datos_empresas.id', 'datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
                         ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
                         ->where('empresas_id', 1)
                         ->where('ciclo_id', 6)
@@ -388,7 +388,7 @@ else:
                         ->orwhere('fecha_entregado', 'LIKE', '%' . $buscar . '%')
                         ->orderBy('id', 'DESC')
                         ->paginate(50);
-            elseif (empty($ciudad) && ($estado > 0)): 
+            elseif (empty($ciudad) && ($estado > 0)):
                 $paginacion = DB::table("datos_empresas")
                         ->where('empresas_id', 1)
                         ->where('ciclo_id', 6)
@@ -400,7 +400,7 @@ else:
                         ->orwhere('fecha_entregado', 'LIKE', '%' . $buscar . '%')
                         ->orderBy('id', 'DESC')
                         ->paginate(50);
-            elseif (($ciudad > 0) && ($estado > 0)): 
+            elseif (($ciudad > 0) && ($estado > 0)):
                 $paginacion = DB::table("datos_empresas")
                         ->where('empresas_id', 1)
                         ->where('ciclo_id', 6)
@@ -413,7 +413,7 @@ else:
                         ->orwhere('fecha_entregado', 'LIKE', '%' . $buscar . '%')
                         ->orderBy('id', 'DESC')
                         ->paginate(50);
-            else: 
+            else:
                 $paginacion = DB::table("datos_empresas")
                         ->where('empresas_id', 1)
                         ->where('ciclo_id', 6)
@@ -426,22 +426,22 @@ else:
                         ->paginate(50);
 
             endif;
-        } 
-        
-        elseif (($_POST['ciudad'] == 'all') && ($_POST['estado'] == 'all')) { 
+        }
+
+        elseif (($_POST['ciudad'] == 'all') && ($_POST['estado'] == 'all')) {
             $paginacion = DB::table("datos_empresas")
                     ->where('empresas_id', 1)
                     ->where('ciclo_id', 6)
                     ->where('contador', ($data[0]->contador - 1))
                     ->orderBy('id', 'DESC')
                     ->paginate(50);
-        } elseif (($_POST['ciudad'] > 0) && ($_POST['estado'] == 'all')) {  
+        } elseif (($_POST['ciudad'] > 0) && ($_POST['estado'] == 'all')) {
             Session::put('ciudad', $_POST['ciudad']);
             $paginacion = DB::table("datos_empresas")
-                    ->where('empresas_id','=', 1)
-                    ->where('ciclo_id','=', 6)
-                    ->where('contador','=', ($data[0]->contador - 1))
-                    ->where('ciudad_id','=', (int)Session::get('ciudad'))
+                    ->where('empresas_id', '=', 1)
+                    ->where('ciclo_id', '=', 6)
+                    ->where('contador', '=', ($data[0]->contador - 1))
+                    ->where('ciudad_id', '=', (int) Session::get('ciudad'))
                     ->orderBy('id', 'DESC')
                     ->paginate(50);
         } elseif (($_POST['ciudad'] == 'all') && ($_POST['estado'] > 0)) {
@@ -453,10 +453,10 @@ else:
                     ->where('estado_id', $_POST['estado'])
                     ->orderBy('id', 'DESC')
                     ->paginate(50);
-        } elseif (($_POST['estado'] > 0) && ($_POST['ciudad'] > 0)) { 
+        } elseif (($_POST['estado'] > 0) && ($_POST['ciudad'] > 0)) {
             Session::put('ciudad', $_POST['ciudad']);
             Session::put('estado', $_POST['estado']);
-            
+
             $paginacion = DB::table("datos_empresas")
                     ->where('empresas_id', 1)
                     ->where('ciclo_id', 6)
@@ -465,9 +465,9 @@ else:
                     ->where('estado_id', $_POST['estado'])
                     ->orderBy('id', 'DESC')
                     ->paginate(50);
-        } else { 
+        } else {
             $paginacion = DB::table("datos_empresas")
-                    ->select('datos_empresas.id','datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                    ->select('datos_empresas.id', 'datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
                     ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
                     ->where('empresas_id', 1)
                     ->where('ciclo_id', 6)
@@ -494,10 +494,9 @@ else:
         Excel::load($input['importar'], function($archivo) {
             $result = $archivo->get();
             $data = DB::table('ciclos')->where('id', $_POST['ciclo'])->get();
-            foreach ($result As $value):
+            foreach ($result As $value): //dd($value);
                 $ciudad = DB::table('ciudades')->where('name', $value['ciudad'])->get();
-                DB::insert('insert into datos_empresas ( estado_id,empresas_id,usuario_id,mes,year,ciclo_id,codigo,name_cliente,tipo_cliente,phone,ciudad_id,contador) '
-                        . 'values (?,?,?,?,?,?,?,?,?,?,?,?)', array(4, 1, Auth::user()->id, $_POST['mes'], date('Y'), $_POST['ciclo'], $value['codigo'], $value['nombre'], $value['tipo'], $value['telefono'], $ciudad[0]->id, $data[0]->contador));
+                DB::insert('insert into datos_empresas ( estado_id,empresas_id,usuario_id,mes,year,ciclo_id,codigo,name_cliente,tipo_cliente,phone,ciudad_id,contador) values (?,?,?,?,?,?,?,?,?,?,?,?)', array(4, 1, Auth::user()->id, $_POST['mes'], date('Y'), $_POST['ciclo'], $value['codigo'], $value['nombre'], $value['tipo'], $value['telefono'], $ciudad[0]->id, $data[0]->contador));
             endforeach;
         });
         $input = Input::all();
@@ -532,12 +531,12 @@ else:
 
     public function postBarrido() {
         $input = Input::all();
-        if($input['observEnt']>0):
-            $observacion =$input['observEnt'];
-        elseif($input['observDev']>0):
-            $observacion =$input['observDev'];
+        if ($input['observEnt'] > 0):
+            $observacion = $input['observEnt'];
+        elseif ($input['observDev'] > 0):
+            $observacion = $input['observDev'];
         else:
-            $observacion ="";
+            $observacion = "";
         endif;
         DB::update("UPDATE datos_empresas SET estado_id = '" . $input['estadodespues'] . "',  observacion_id = '" . $observacion . "' "
                 . "WHERE estado_id = '" . $input['estadoantes'] . "' AND ciclo_id = '" . $input['ciclo'] . "' AND ciudad_id = '" . $input['ciudad'] . "'  AND mes = '" . $input['mes'] . "' AND year = '" . $input['year'] . "' ");
@@ -628,12 +627,12 @@ else:
         $pdf->Cell(40, 10, 'Fecha: ' . date('d-m-Y'), 0, 1, 'L');
         $pdf->Cell(10, 10, 'Producto: Ciclo C-46 Movil', 0, 1, 'L');
         $pdf->SetX(5);
-        $pdf->Cell(7, 10, 'Nº', 1, 0, 'C');
+        $pdf->Cell(7, 10, 'Nï¿½', 1, 0, 'C');
         $pdf->Cell(15, 10, 'Codigo', 1, 0, 'C');
         $pdf->Cell(60, 10, 'Nombre', 1, 0, 'C');
         $pdf->Cell(30, 10, 'Tipo Cliente', 1, 0, 'C');
         $pdf->Cell(20, 10, 'Estado', 1, 0, 'C');
-        $pdf->Cell(45, 10, 'Observación', 1, 0, 'C');
+        $pdf->Cell(45, 10, 'Observaciï¿½n', 1, 0, 'C');
         $pdf->Cell(30, 10, 'Comentario', 1, 0, 'C');
         $pdf->Cell(25, 10, 'Mensajero', 1, 0, 'C');
         $pdf->Cell(35, 10, 'Ciudad', 1, 1, 'C');
@@ -722,7 +721,7 @@ else:
                 array_push($data, array('', 'Cliente: ', 'Claro', '', 'Fecha:' . date('d-m-Y'), '', ''));
                 array_push($data, array('', utf8_decode('Producto: '), 'Ciclo C-46 Movil', '', '', '', ''));
                 array_push($data, array('', '', '', '', '', '', ''));
-                array_push($data, array('NÂº', 'Codigo', 'Nombre', 'Tipo Cliente','Estado', 'Observacion', 'Comentario', 'Mensajero', 'Ciudad'));
+                array_push($data, array('NÂº', 'Codigo', 'Nombre', 'Tipo Cliente', 'Estado', 'Observacion', 'Comentario', 'Mensajero', 'Ciudad'));
                 $contador = DB::table('ciclos')->where('id', 6)->get();
                 $datos = DB::table('datos_empresas')
                         ->where('empresas_id', 1)
@@ -747,7 +746,7 @@ else:
                     if ($observacion == NULL): $observaciones = '';
                     else: $observaciones = $observacion['name'];
                     endif;
-                    array_push($data, array($i, $variable->codigo, $variable->name_cliente, $variable->tipo_cliente,$estados, $observaciones, $variable->comentario, $mensajeros, $ciudades));
+                    array_push($data, array($i, $variable->codigo, $variable->name_cliente, $variable->tipo_cliente, $estados, $observaciones, $variable->comentario, $mensajeros, $ciudades));
                 endforeach;
 
                 $sheet->fromArray($data, null, 'A1', false, false);
@@ -765,12 +764,12 @@ else:
         $pdf->Cell(40, 10, 'Fecha: ' . date('d-m-Y'), 0, 1, 'L');
         $pdf->Cell(10, 10, 'Producto: Ciclo C-46 TV', 0, 1, 'L');
         $pdf->SetX(5);
-        $pdf->Cell(7, 10, 'Nº', 1, 0, 'C');
+        $pdf->Cell(7, 10, 'Nï¿½', 1, 0, 'C');
         $pdf->Cell(15, 10, 'Codigo', 1, 0, 'C');
         $pdf->Cell(60, 10, 'Nombre', 1, 0, 'C');
         $pdf->Cell(30, 10, 'Tipo Cliente', 1, 0, 'C');
         $pdf->Cell(20, 10, 'Estado', 1, 0, 'C');
-        $pdf->Cell(45, 10, 'Observación', 1, 0, 'C');
+        $pdf->Cell(45, 10, 'Observaciï¿½n', 1, 0, 'C');
         $pdf->Cell(30, 10, 'Comentario', 1, 0, 'C');
         $pdf->Cell(25, 10, 'Mensajero', 1, 0, 'C');
         $pdf->Cell(35, 10, 'Ciudad', 1, 1, 'C');
@@ -859,7 +858,7 @@ else:
                 array_push($data, array('', 'Cliente: ', 'Claro', '', 'Fecha:' . date('d-m-Y'), '', ''));
                 array_push($data, array('', utf8_decode('Producto: '), 'Ciclo C-46 TV', '', '', '', ''));
                 array_push($data, array('', '', '', '', '', '', ''));
-                array_push($data, array('NÂº', 'Codigo', 'Nombre','Tipo Cliente', 'Estado', 'Observacion', 'Comentario', 'Mensajero', 'Ciudad'));
+                array_push($data, array('NÂº', 'Codigo', 'Nombre', 'Tipo Cliente', 'Estado', 'Observacion', 'Comentario', 'Mensajero', 'Ciudad'));
                 $contador = DB::table('ciclos')->where('id', 1)->get();
                 $datos = DB::table('datos_empresas')
                         ->where('empresas_id', 1)
@@ -884,7 +883,7 @@ else:
                     if ($observacion == NULL): $observaciones = '';
                     else: $observaciones = $observacion['name'];
                     endif;
-                    array_push($data, array($i, $variable->codigo, $variable->name_cliente,$variable->tipo_cliente, $estados, $observaciones, $variable->comentario, $mensajeros, $ciudades));
+                    array_push($data, array($i, $variable->codigo, $variable->name_cliente, $variable->tipo_cliente, $estados, $observaciones, $variable->comentario, $mensajeros, $ciudades));
                 endforeach;
 
                 $sheet->fromArray($data, null, 'A1', false, false);
@@ -902,12 +901,12 @@ else:
         $pdf->Cell(40, 10, 'Fecha: ' . date('d-m-Y'), 0, 1, 'L');
         $pdf->Cell(10, 10, 'Producto: Ciclo C-48', 0, 1, 'L');
         $pdf->SetX(5);
-        $pdf->Cell(7, 10, 'Nº', 1, 0, 'C');
+        $pdf->Cell(7, 10, 'Nï¿½', 1, 0, 'C');
         $pdf->Cell(15, 10, 'Codigo', 1, 0, 'C');
         $pdf->Cell(60, 10, 'Nombre', 1, 0, 'C');
         $pdf->Cell(30, 10, 'Tipo Cliente', 1, 0, 'C');
         $pdf->Cell(20, 10, 'Estado', 1, 0, 'C');
-        $pdf->Cell(45, 10, 'Observación', 1, 0, 'C');
+        $pdf->Cell(45, 10, 'Observaciï¿½n', 1, 0, 'C');
         $pdf->Cell(30, 10, 'Comentario', 1, 0, 'C');
         $pdf->Cell(25, 10, 'Mensajero', 1, 0, 'C');
         $pdf->Cell(35, 10, 'Ciudad', 1, 1, 'C');
@@ -996,7 +995,7 @@ else:
                 array_push($data, array('', 'Cliente: ', 'Claro', '', 'Fecha:' . date('d-m-Y'), '', ''));
                 array_push($data, array('', utf8_decode('Producto: '), 'Ciclo C-48', '', '', '', ''));
                 array_push($data, array('', '', '', '', '', '', ''));
-                array_push($data, array('NÂº', 'Codigo', 'Nombre','Tipo Cliente', 'Estado', 'Observacion', 'Comentario', 'Mensajero', 'Ciudad'));
+                array_push($data, array('NÂº', 'Codigo', 'Nombre', 'Tipo Cliente', 'Estado', 'Observacion', 'Comentario', 'Mensajero', 'Ciudad'));
                 $contador = DB::table('ciclos')->where('id', 7)->get();
                 $datos = DB::table('datos_empresas')
                         ->where('empresas_id', 1)
@@ -1021,7 +1020,7 @@ else:
                     if ($observacion == NULL): $observaciones = '';
                     else: $observaciones = $observacion['name'];
                     endif;
-                    array_push($data, array($i, $variable->codigo, $variable->name_cliente,$variable->tipo_cliente, $estados, $observaciones, $variable->comentario, $mensajeros, $ciudades));
+                    array_push($data, array($i, $variable->codigo, $variable->name_cliente, $variable->tipo_cliente, $estados, $observaciones, $variable->comentario, $mensajeros, $ciudades));
                 endforeach;
 
                 $sheet->fromArray($data, null, 'A1', false, false);

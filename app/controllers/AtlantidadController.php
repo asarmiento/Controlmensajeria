@@ -153,12 +153,12 @@ class AtlantidadController extends BaseController {
         $pdf->Cell(40, 10, 'Fecha: ' . date('d-m-Y'), 0, 1, 'L');
         $pdf->Cell(10, 10, 'Producto: Estado de Cuentas', 0, 1, 'L');
         $pdf->SetX(5);
-        $pdf->Cell(10, 10, 'NÂº', 1, 0, 'C');
-        $pdf->Cell(35, 10, 'NÂº Cliente', 1, 0, 'C');
+        $pdf->Cell(10, 10, 'Nº', 1, 0, 'C');
+        $pdf->Cell(35, 10, 'Nº Cliente', 1, 0, 'C');
         $pdf->Cell(75, 10, 'Nombre', 1, 0, 'C');
         $pdf->Cell(20, 10, 'Estado', 1, 0, 'C');
         $pdf->Cell(25, 10, 'Comentario', 1, 0, 'C');
-        $pdf->Cell(18, 10, 'Telï¿½fono', 1, 0, 'C');
+        $pdf->Cell(18, 10, 'Teléfono', 1, 0, 'C');
         $pdf->Cell(23, 10, 'Mensajero', 1, 1, 'C');
         $data = DB::table('ciclos')->where('id', 9)->get();
         $datos = DB::table("datos_empresas")
@@ -271,10 +271,10 @@ class AtlantidadController extends BaseController {
         $pdf->Cell(40, 10, 'Fecha: ' . date('d-m-Y'), 0, 1, 'L');
         $pdf->Cell(10, 10, 'Producto: Tarjetas de Credito', 0, 1, 'L');
         $pdf->SetX(5);
-        $pdf->Cell(10, 10, 'Nï¿½', 1, 0, 'C');
+        $pdf->Cell(10, 10, 'Nº', 1, 0, 'C');
         $pdf->Cell(50, 10, 'Nombre', 1, 0, 'C');
         $pdf->Cell(30, 10, 'Tipo Tarjeta', 1, 0, 'C');
-        $pdf->Cell(25, 10, 'Nï¿½ Tarjeta', 1, 0, 'C');
+        $pdf->Cell(25, 10, 'Nº Tarjeta', 1, 0, 'C');
         $pdf->Cell(18, 10, 'Estado', 1, 0, 'C');
         $pdf->Cell(25, 10, 'Comentario', 1, 0, 'C');
         $pdf->Cell(25, 10, 'Fecha Entrega', 1, 0, 'C');

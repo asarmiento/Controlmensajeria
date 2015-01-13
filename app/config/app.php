@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => FALSE,
+	'debug' => TRUE,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return array(
 	|
 	*/
 
-	'locale' => 'es',
+	'locale' => 'en',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -123,7 +123,6 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
                 'Maatwebsite\Excel\ExcelServiceProvider',
-            'Way\Generators\GeneratorsServiceProvider',
 
 	),
 

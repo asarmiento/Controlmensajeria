@@ -15,7 +15,7 @@
                
                 <table>
                     <thead>
-                    <th>NÂº</th>
+                    <th>Nº</th>
                     <th>Productos</th>
                     </thead>
                      @foreach($ciclos AS $datos)
