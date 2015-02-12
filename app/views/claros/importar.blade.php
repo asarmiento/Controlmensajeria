@@ -44,4 +44,9 @@ $mes = array(
             
             {{Form::input('submit',null,'importar',array('class'=>'btn btn-danger '))}}
 {{Form::close()}}</center>
+
+<hr>
+<center><h2><span class="glyphicon glyphicon-list-alt"><br>Ejemplo</span></h2></center><br>
+<center><img src="../../public/img/Ejemplo-Claro.png"></center>
+
 @stop
