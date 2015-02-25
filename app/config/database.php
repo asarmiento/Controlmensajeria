@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'elcorso_test',
-			'username'  => 'elcorso_systeme',
-			'password'  => 'F4cc0unt',
+			'database'  => 'elcorso_mensajeria',
+			'username'  => 'elcorso_elcorso',
+			'password'  => '6!Ki2Q]b+=XE',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

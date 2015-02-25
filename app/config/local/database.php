@@ -22,10 +22,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'homestead',
-			'username'  => 'homestead',
-			'password'  => 'secret',
+			'host'      => '184.107.199.106',
+			'database'  => 'elcorso_mensajeria',
+			'username'  => 'elcorso_elcorso',
+			'password'  => '6!Ki2Q]b+=XE',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

@@ -1,9 +1,9 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
 
-class CreateUrlsTable extends Migration {
+class CreateEstadosTable extends Migration {
 
     /**
      * Run the migrations.
@@ -11,12 +11,11 @@ class CreateUrlsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('urls', function(Blueprint $table) {
+        Schema::create('estados', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id');
-            $table->string('url');
-            $table->string('description');
+            $table->string('name');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -26,7 +25,7 @@ class CreateUrlsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('urls');
+        Schema::drop('estados');
     }
 
 }
