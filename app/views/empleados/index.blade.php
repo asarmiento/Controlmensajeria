@@ -113,7 +113,7 @@
                 <th>Editar</th>
             </tr>
         </thead>
-        <tbody><?php $i=0; //dd($resultado); ?>
+        <tbody><?php $i=0; ?>
             @foreach($resultado AS $datos) <?php $i++; ?>
             <tr>
                 <td>{{$i}}</td>

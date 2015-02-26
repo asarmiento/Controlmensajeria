@@ -30,8 +30,8 @@
 
            {{ Form::open(array('url' => '/login', 'action'=>'URL::action("AuthController@postLogin")', 'method'=>'post')) }}
             <div class="">
-                <label for="username">{{ Form::label('usuario', 'Usuario:') }} </label></div>
-                {{ Form::text('username', Input::old('username'), array('class'=>'form-control')); }} <br><br>
+                <label for="username">{{ Form::label('usuario', 'Email:') }} </label></div>
+                {{ Form::text('email', Input::old('email'), array('class'=>'form-control')); }} <br><br>
             
             <div class="">
                 <label for="password">{{ Form::label('contraseña', 'Contraseña:') }} </label>

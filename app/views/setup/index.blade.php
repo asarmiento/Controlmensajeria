@@ -3,10 +3,10 @@
 <meta name="description" content="Pagina inicio">
 <meta name="author" content="Anwar Sarmiento">
 <meta name="keyword" content="palabras, clave">     
-<title><?php echo utf8_encode('Configuración'); ?></title>
+<title><?php echo utf8_encode('ConfiguraciÃ³n'); ?></title>
 @stop
 @section('title')
-<h1 class="text-lowercase"><?php echo utf8_encode('Datos de Configuración'); ?></h1>
+<h1 class="text-lowercase"><?php echo utf8_encode('Datos de Configuraciï¿½n'); ?></h1>
 @stop
 @section('container') 
 <div class="table-responsive">

@@ -13,4 +13,8 @@
  */
 class Ciudade extends Eloquent{
     //put your code here
+    
+    protected $fillable = ['name'];
+    
+     public static $rules=['name'=>'required'];
 }

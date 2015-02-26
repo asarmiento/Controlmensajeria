@@ -12,5 +12,7 @@
  * @author Sistemas Amigables
  */
 class Observacione extends Eloquent {
-   
+   	protected $fillable = [];
+        
+         public static $rules=[];
 }

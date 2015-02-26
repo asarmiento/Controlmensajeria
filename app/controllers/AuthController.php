@@ -30,7 +30,7 @@ class AuthController extends BaseController {
     {
         // Guardamos en un arreglo los datos del usuario.
         $userdata = array(
-            'username' => Input::get('username'),
+            'email' => Input::get('email'),
             'password'=> Input::get('password')
         );
         // Validamos los datos y además mandamos como un segundo parámetro la opción de recordar el usuario.

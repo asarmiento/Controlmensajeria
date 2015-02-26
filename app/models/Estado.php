@@ -13,4 +13,7 @@
  */
 class Estado extends Eloquent{
     //put your code here
+    	protected $fillable = [];
+        
+         public static $rules=[];
 }

@@ -11,11 +11,17 @@ class UserTableSeeder extends Seeder {
     public function run() {
         DB::table('users')->delete();
         User::create(array(
-            'username' => 'fierstuser',
-            'password' => Hash::make('fierst_password')
+            'name' => 'Gustavo',
+            'last' => 'Cruz',
+            'type_users_id' => 1,
+            'email' => 'tavitocruz@gmail.com',
+            'password' => Hash::make('admin')
         ));
         User::create(array(
-            'username' => 'admin',
+            'name' => 'Anwar',
+            'last' => 'Sarmiento',
+            'type_users_id' => 1,
+            'email' => 'anwarsarmiento@gmail.com',
             'password' => Hash::make('F4cc0unt')
         ));
     }

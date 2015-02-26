@@ -24,8 +24,11 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password', 'remember_token');
 
 	public $validator;
+        public function nombre_completo(){
+            return $this->name.' '.$this->last;
+        }
 
-    public function isValid($data)
+        public function isValid($data)
     {
         $rules = array(
             'email'     => 'required|email|unique:users',

@@ -6,6 +6,13 @@
  * and open the template in the editor.
  */
 class Empleado extends Eloquent{
-    
+    	protected $fillable = [];
+        
+         public static $rules=[];
+         
+         public function Ciudades()
+         {
+             return $this->hasMany('Ciudade');
+         }
 }
 

@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration {
             $table->string('email')->unique();
             $table->string('password');
             $table->string('remember_token');
-            $table->integer('empleados_id')->unsigned()->index();
+            $table->integer('empleados_id')->nullable()->unsigned()->index();
             $table->foreign('empleados_id')->references('id')->on('empleados')->onDelete('no action');
-            $table->integer('empresas_id')->unsigned()->index();
+            $table->integer('empresas_id')->nullable()->unsigned()->index();
             $table->foreign('empresas_id')->references('id')->on('empresas')->onDelete('no action');
             $table->integer('type_users_id')->unsigned()->index();
             $table->foreign('type_users_id')->references('id')->on('type_users')->onDelete('no action');

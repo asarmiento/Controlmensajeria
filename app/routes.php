@@ -17,14 +17,14 @@ Route::get('login', 'AuthController@showLogin');
 
 // Validamos los datos de inicio de sesiÃ³n.
 Route::post('login', 'AuthController@postLogin');
-
+Route::get('empleados','EmpleadoController@index');
 // Nos indica que las rutas que estÃ¡n dentro de Ã©l sÃ³lo serÃ¡n mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function() {
     // Esta serÃ¡ nuestra ruta de bienvenida.
     Route::get('/', function() {
         return View::make('hello');
     });
-
+    
     Route::controller('users', 'UserController');
     Route::controller('generales', 'GeneralController');
     Route::controller('columbus', 'ColumbusController');
@@ -39,6 +39,9 @@ Route::group(array('before' => 'auth'), function() {
     // Esta ruta nos servirÃ¡ para cerrar sesiÃ³n.
     Route::get('logout', 'AuthController@logOut');
 });
+
+Route::get('configuracion/crear-estado', 'EstadoController@create');
+
 
 use Anouar\Fpdf\Fpdf as baseFpdf;
 class PDF extends baseFpdf

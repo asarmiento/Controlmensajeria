@@ -14,7 +14,7 @@
     </div>   
         
     <ul class="nav">  
-         @if(Auth::user()->tipos_id=='1') 
+         @if(Auth::user()->type_users_id=='1') 
         <li class="dropdown">                  
             <a href="#" class="boton-cliente" data-toggle="dropdown">Banco Occidente<span class="caret"></span></a>  
             <ul class="dropdown-menu" role="menu">                        
