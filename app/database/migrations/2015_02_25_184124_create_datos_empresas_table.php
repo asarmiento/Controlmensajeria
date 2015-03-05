@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateDastosEmpresasTable extends Migration {
+class CreateDatosEmpresasTable extends Migration {
 
     /**
      * Run the migrations.
@@ -19,16 +19,18 @@ class CreateDastosEmpresasTable extends Migration {
             $table->string('telefono')->nullable();
             $table->string('name_cliente')->nullable();
             $table->string('comentario')->nullable();
-            $table->string('fecha_entregado')->nullable();
-            $table->string('fecha_recibido')->nullable();
+            $table->date('fecha_entregado')->nullable();
+            $table->date('fecha_recibido')->nullable();
             $table->string('monto')->nullable();
             $table->string('direccion')->nullable();
             $table->string('comentario_ciudad')->nullable();
-            $table->integer('observaciones_id')->unsigned()->index();
+            $table->integer('ciudades_id')->unsigned()->index();
+            $table->foreign('ciudades_id')->references('id')->on('ciudades')->onDelete('no action');
+            $table->integer('observaciones_id')->unsigned()->nullable()->index();
             $table->foreign('observaciones_id')->references('id')->on('observaciones')->onDelete('no action');
             $table->integer('historials_id')->unsigned()->index();
             $table->foreign('historials_id')->references('id')->on('historials')->onDelete('no action');
-            $table->integer('empleados_id')->unsigned()->index();
+            $table->integer('empleados_id')->unsigned()->nullable()->index();
             $table->foreign('empleados_id')->references('id')->on('empleados')->onDelete('no action');
             $table->timestamps();
             $table->softDeletes();

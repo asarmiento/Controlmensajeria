@@ -15,8 +15,9 @@
      
 <center><h2><span class="glyphicon glyphicon-list-alt"><br>Administración Claro <img src="http://sistema.elcorso.hn/asset/img/logosclientes/logo-claro.png"></span></h2></center>
 <hr>
-@if(Auth::user()->tipos_id=="1")
+@if(Auth::user()->type_users_id=="1")
 <h3><span class="glyphicon glyphicon-list-alt"><br>Ciclos</span></h3>
+<div class="btn btn-danger"><a href="{{route('importar-ciclo',1)}}">Subir Ciclo</a></a></div>
 <div class="btn btn-danger"><a href="claros/productos">Productos</a></a></div>
 <div class="btn btn-danger"><a href="claros/agregar">Agregar Personas al Ciclo</a></a></div>
 <div class="btn btn-danger"><a href="claros/historial">Historial de Ciclo</a></div>
@@ -32,7 +33,7 @@
 <h3><span class="glyphicon glyphicon-list-alt"><br>Otras funciones</span></h3>
 <div class="btn btn-danger"><a href="claros/barrido">Barrido</a></div>
 @endif
-@if(Auth::user()->tipos_id=="2")
+@if(Auth::user()->type_users_id=="2")
 
 <h3><span class="glyphicon glyphicon-list-alt"><br>Scanear</span></h3>
 <div class="btn btn-danger"><a href="claros/scanearc48">Scanear Sobres <br>de Ciclo C-48</a></div>

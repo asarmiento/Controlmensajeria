@@ -13,7 +13,7 @@
  */
 class Ciudade extends Eloquent{
     //put your code here
-    
+    protected $table = 'ciudades';
     protected $fillable = ['name'];
     
      public static $rules=['name'=>'required'];

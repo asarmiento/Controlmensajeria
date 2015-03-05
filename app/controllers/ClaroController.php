@@ -18,6 +18,9 @@ class ClaroController extends BaseController {
 
         return View::make('claros.index');
     }
+    public function importar(){
+        return View::make('claros.importar');
+    }
 
     public function getC48() {
         $data = DB::table('ciclos')->where('id', 7)->get();

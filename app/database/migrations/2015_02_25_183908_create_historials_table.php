@@ -15,6 +15,7 @@ class CreateHistorialsTable extends Migration {
             $table->increments('id');
             $table->integer('mes');
             $table->string('year');
+            $table->text('url');
             $table->integer('productos_id')->unsigned()->index();
             $table->foreign('productos_id')->references('id')->on('productos')->onDelete('no action');
             $table->timestamps();
