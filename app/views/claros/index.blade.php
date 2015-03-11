@@ -20,7 +20,7 @@
 <div class="btn btn-danger"><a href="{{route('importar-ciclo',1)}}">Subir Ciclo</a></a></div>
 <div class="btn btn-danger"><a href="claros/productos">Productos</a></a></div>
 <div class="btn btn-danger"><a href="claros/agregar">Agregar Personas al Ciclo</a></a></div>
-<div class="btn btn-danger"><a href="claros/historial">Historial de Ciclo</a></div>
+<div class="btn btn-danger"><a href="{{route('historial-productos',1)}}">Historial de Ciclo</a></div>
 <hr>
 <h3><span class="glyphicon glyphicon-list-alt"><br>Scanear</span></h3>
 <div class="btn btn-danger"><a href="claros/scanearc48">Scanear Sobres <br>de Ciclo C-48</a></div>

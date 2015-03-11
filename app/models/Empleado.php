@@ -14,5 +14,7 @@ class Empleado extends Eloquent{
          {
              return $this->hasMany('Ciudade');
          }
+
+         
 }
 

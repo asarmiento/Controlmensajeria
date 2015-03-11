@@ -29,7 +29,7 @@ class EmpresasController extends \BaseController {
      * @return Response
      */
     public function store() {
-//
+
     }
 
     /**
@@ -40,7 +40,7 @@ class EmpresasController extends \BaseController {
      * @return Response
      */
     public function show($id) {
-//
+       
     }
 
     /**
@@ -92,18 +92,23 @@ class EmpresasController extends \BaseController {
      */
     public function SaveClaro() {
         set_time_limit(0);
+        ini_set('memory_limit', '10240M');
         /* de claramos las variables que recibimos por post */
         $mes = Input::get('mes');
         $year = Input::get('year');
         $producto = Input::get('productos_id');
         $file = Input::file('excel');
         $url = "files/claro/CICLO" . $producto . str_pad($mes, 2, '0', STR_PAD_LEFT) . $year . ".xlsx";
+
+
         /* agregamos un nuevo historial y retornamos el ID o buscamos regresamos el ID */
         $idHistorial = $this->SaveHistorials($mes, $year, $producto, $url);
+
         /* Corremos el archivo de excel y lo convertimos en un array */
-        $excel = $this->uploadExcel($file, 'clasro', 'CICLO' . $producto . str_pad($mes, 2, '0', STR_PAD_LEFT) . $year . '.xlsx');
-return  $this->saveExcel($excel, $idHistorial);
-//return $idHistorial;
+        $excel = $this->uploadExcel($file, 'claro', 'CICLO' . $producto . str_pad($mes, 2, '0', STR_PAD_LEFT) . $year . '.xlsx');
+        
+        return  $this->saveExcel($excel, $idHistorial);
+
     }
 
     /**
@@ -171,16 +176,32 @@ return  $this->saveExcel($excel, $idHistorial);
      * @return boolean
      */
     private function uploadExcel($file, $path, $fileName) {
+
         $path = 'files/' . $path;
+
         if (strtoupper($file->getClientOriginalExtension()) == 'XLSX' || strtoupper($file->getClientOriginalExtension()) == 'XLS'):
+
             $file->move($path, $fileName);
-            return Excel::load($path . '/' . $fileName, function ($reader) {
-                        $reader->formatDates(true, 'Ym');
-                    })->calculate()->toArray();
+
+            $files=  $path . '/' . $fileName;
+               
+
+         $excel=    Excel::load($files, function ($reader) {
+                    // $reader->formatDates(true, 'Ym');
+                    })->calculate()->toObject();
+            return $excel;
+
         endif;
+
         return false;
     }
-
+    public function ListaDatosEmpresas(){
+         $datosEmpresas = DatosEmpresa::paginate();
+        return View::make('claros.listaDatosEmpresas',compact('datosEmpresas'));
+    }
+    /**
+    * Busca las ciudades por nombre y devuelve el id de la ciudad
+    */
     private function convertionCiudad($ciudad) {
         $city = Ciudade::where('name', '=', $ciudad)->first();
         if ($city):

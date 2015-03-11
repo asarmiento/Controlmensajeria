@@ -11,8 +11,18 @@
  *
  * @author Sistemas Amigables
  */
-class Observacione extends Eloquent {
+class Observacione extends \Eloquent {
    	protected $fillable = [];
         
          public static $rules=[];
+
+         public function estados(){
+
+         	return $this->belongsTo('Estado');
+         }
+
+         public function datosEmpresas(){
+
+         	return hasMany('DatosEmpresa');
+         }
 }

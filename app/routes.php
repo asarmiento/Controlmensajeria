@@ -27,7 +27,8 @@ Route::group(array('before' => 'auth'), function() {
     /*Ruta para importar archivos de CLARO */
     Route::get('claro/importar-ciclo/{id}',['as'=>'importar-ciclo','uses'=>'EmpresasController@importarClaro']);
     Route::post('claro/importar-ciclo',['as'=>'save-ciclo','uses'=>'EmpresasController@SaveClaro']);
-    
+    Route::get('claro/ciclo','EmpresasController@ListaDatosEmpresas');
+    Route::get('historial-productos/{id}',['as'=>'historial-productos','uses'=>'HistorialsController@index']);
     
     
     
