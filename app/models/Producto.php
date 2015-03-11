@@ -7,7 +7,7 @@ class Producto extends Eloquent {
 
           public function observaciones()
          {
-         	return $this->belongsToMany('ObservacioneProducto');
+         	return $this->belongsToMany('Observacione');
          }
 
           public function empresas()

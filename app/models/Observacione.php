@@ -25,4 +25,8 @@ class Observacione extends \Eloquent {
 
          	return hasMany('DatosEmpresa');
          }
+         public function productos(){
+
+         	return $this->belongsToMany('Producto');
+         }
 }

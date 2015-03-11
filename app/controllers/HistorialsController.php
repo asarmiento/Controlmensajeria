@@ -84,4 +84,49 @@ class HistorialsController extends \BaseController {
 		//
 	}
 
+	public function descargasProducto($id){
+
+		$historial = Historial::find($id);
+		$separar =  explode('/',$historial->url);
+		$quitarExtencion = explode('.',$separar[2]);
+		$data=array(array('Codigo',
+			'Tipo Cliente',
+			'Telefono',
+			'Nombre Cliente',
+			'Ciudad',
+			'Comentario',
+			'Fecha Entrega',
+			'fecha recibido',
+			'monto',
+			'direccion',
+			'comentario ciudad','observaciones','empleados'));
+		foreach ($historial->datosEmpresas as $value):  
+			
+			$data[]=
+		array($value->codigo,
+				$value->tipo_cliente,
+				$value->telefono,
+				$value->name_cliente,
+				$value->ciudades->name,
+				$value->comentario,
+				$value->fecha_entregado,
+				$value->fecha_recibido,
+				$value->monto,
+				$value->direccion,
+				$value->comentario_ciudad,
+				$value->observaciones->name
+				);
+//
+		endforeach;
+		 dd($data);
+	Excel::create($quitarExtencion[0], function($excel) use ($data) {
+	
+$excel->sheet('Datos Descargados', function($sheet) use ($data) {
+		$sheet->fromArray($data);
+});
+})->download('xlsx');
+		
+			
+	}
+
 }

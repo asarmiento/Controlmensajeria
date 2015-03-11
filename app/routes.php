@@ -29,6 +29,7 @@ Route::group(array('before' => 'auth'), function() {
     Route::post('claro/importar-ciclo',['as'=>'save-ciclo','uses'=>'EmpresasController@SaveClaro']);
     Route::get('claro/ciclo','EmpresasController@ListaDatosEmpresas');
     Route::get('historial-productos/{id}',['as'=>'historial-productos','uses'=>'HistorialsController@index']);
+    Route::get('descarga-productos/{id}',['as'=>'descarga-productos','uses'=>'HistorialsController@descargasProducto']);
     
     
     

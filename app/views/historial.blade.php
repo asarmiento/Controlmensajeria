@@ -3,7 +3,7 @@
 <meta name="description" content="Pagina inicio">
 <meta name="author" content="Anwar Sarmiento">
 <meta name="keyword" content="palabras, clave">     
-<title>Escanear</title>
+<title>Historial</title>
 <script type="text/javascript">
     $(document).ready(function(){ $('#newestado').focus();});
 </script>
@@ -18,10 +18,10 @@
                     <th>Mes</th>
                     <th>Year</th>
                     <th>Cantidad Filas</th>
-                    <th>En Ruta</th>
+                    <!--th>En Ruta</th>
                     <th>Entregado</th>
-                    <th>Devolucion</th>
-                    <th>No Entregado</th>
+                    <th>Devolucion</th-->
+                    <th>Descargar</th>
                     <th>Eliminar</th>
                     </thead>
                      @foreach($historial AS $datos)
@@ -32,12 +32,16 @@
                     <td>{{$datos->mes}}</td>
                     <td>{{$datos->year}}</td>
                     <td>{{$datos->datosEmpresas->count()}}</td>
-                    <td>{{$datos->productos->observaciones->estados->count()}}</td>
-                    <td>{{$datos}}</td>
-                    <td>{{$datos}}</td>
-                    <td>{{$datos}}</td>
-                    <td><a class="btn btn-danger" href="#">
-                            <span class="glyphicon glyphicon-remove-circle"></span></a></td>
+                    <!--td></td>
+                    <td></td>
+                    <td></td-->
+                    <td><a class="btn btn-default" href="{{route('descarga-productos',$datos->id)}}"><span class="glyphicon glyphicon-cloud-download"></a></td>
+                    <td>
+                        <a class="btn btn-danger" href="#">
+                            <span class="glyphicon glyphicon-remove-circle">
+                            </span>
+                        </a>
+                    </td>
                     </tr>
                     </tbody>
                    
