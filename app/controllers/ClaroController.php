@@ -594,15 +594,18 @@ class ClaroController extends BaseController {
     }
 
     public function getScanearc48() {
-        return View::make('claros.scanearc48');
+        $mes = $this->Mes();
+        return View::make('claros.scanearc48',  compact('mes'));
     }
 
     public function getScanearc46tv() {
-        return View::make('claros.scanearc46tv');
+         $mes = $this->Mes();
+        return View::make('claros.scanearc46tv',  compact('mes'));
     }
 
     public function getScanearc46movil() {
-        return View::make('claros.scanearc46movil');
+         $mes = $this->Mes();
+        return View::make('claros.scanearc46movil',  compact('mes'));
     }
 
     public function postScanearciclo() {

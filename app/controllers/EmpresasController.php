@@ -165,7 +165,7 @@ class EmpresasController extends \BaseController {
             $datos_empresas->empleados_id = null;
             $datos_empresas->save();
         endforeach;
-        return array('message' => 'Se guardo con exito');
+        return Redirect::to('claro/ciclo')->with('messege','se guardo con exito!!');
     }
 
     /**
@@ -210,6 +210,31 @@ class EmpresasController extends \BaseController {
         return false;
     }
 
-  
+    public function scanearCiclo() {
+        $data =Input::all();
+        
+          $Producto = Historial::where('mes','=',$data['mes'])->where('year','=',$data['year'])->where('productos_id','=',$data['ciclo'])->get(); 
+        if(($Producto)): 
+              DB::update("UPDATE datos_empresas SET observaciones_id = 17 WHERE historials_id =  ".$Producto[0]->id."  AND codigo = ".$data['id']);
+         
+          if ($data['ciclo'] == 1):
+              return Redirect::to('claros/scanearc46tv');
+          elseif ($data['ciclo'] == 2):
+              return Redirect::to('claros/scanearc46movil');
+          elseif ($data['ciclo'] == 3):
+              return Redirect::to('claros/scanearc48');
+          endif;
+        endif;
+         if ($data['ciclo'] == 1):
+              return Redirect::to('claros/scanearc46tv')->with('message','No se cambio el estado');
+          elseif ($data['ciclo'] == 2):
+              return Redirect::to('claros/scanearc46movil')->with('message','No se cambio el estado');
+          elseif ($data['ciclo'] == 3):
+              return Redirect::to('claros/scanearc48')->with('message','No se cambio el estado');
+          endif;
+        
+        
+      
+      }
 
 }

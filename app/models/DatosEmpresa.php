@@ -10,7 +10,10 @@ class DatosEmpresa extends \Eloquent {
 
          	return $this->belongsTo('Observacione');
          }
+        public function observacionesMany(){
 
+         	return $this->belongsToMany('Observacione');
+         }
          public function ciudades(){
 
          	return $this->belongsTo('Ciudade');

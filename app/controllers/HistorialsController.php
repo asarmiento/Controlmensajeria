@@ -81,7 +81,7 @@ class HistorialsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		echo $id;
 	}
 
 	public function descargasProducto($id){
@@ -118,7 +118,7 @@ class HistorialsController extends \BaseController {
 				);
 //
 		endforeach;
-		 dd($data);
+		
 	Excel::create($quitarExtencion[0], function($excel) use ($data) {
 	
 $excel->sheet('Datos Descargados', function($sheet) use ($data) {

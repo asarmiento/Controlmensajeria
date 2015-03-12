@@ -75,9 +75,9 @@
             <a href="#" class="boton-cliente" data-toggle="dropdown">Claro<span class="caret"></span></a>   
             <ul class="dropdown-menu" role="menu">
                 <li><a>{{ HTML::link('/claros/', 'Administración') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c48', 'Ciclo C-48') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c46tv', 'Ciclo C-46 TV') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c46movil', 'Ciclo C-46 Movil') }}</a></li>   
+                <li><a>{{ HTML::link('/claro/ciclo', 'Ciclo C-48') }}</a></li>
+                <li><a>{{ HTML::link('/claro/ciclo', 'Ciclo C-46 TV') }}</a></li>
+                <li><a>{{ HTML::link('/claro/ciclo', 'Ciclo C-46 Movil') }}</a></li>   
             </ul>               
         </li>    
         <li class="dropdown">   

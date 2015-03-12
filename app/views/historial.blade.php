@@ -35,12 +35,10 @@
                     <!--td></td>
                     <td></td>
                     <td></td-->
-                    <td><a class="btn btn-default" href="{{route('descarga-productos',$datos->id)}}"><span class="glyphicon glyphicon-cloud-download"></a></td>
-                    <td>
-                        <a class="btn btn-danger" href="#">
-                            <span class="glyphicon glyphicon-remove-circle">
-                            </span>
-                        </a>
+                    <td><a class="btn btn-default" href="{{route('descarga-productos',$datos->id)}}"><span class="glyphicon glyphicon-cloud-download"> </span></a></td>
+                    <td><a class="btn btn-danger" href=""><span class="glyphicon glyphicon-remove-circle"> 
+                            </span></a>
+                       
                     </td>
                     </tr>
                     </tbody>

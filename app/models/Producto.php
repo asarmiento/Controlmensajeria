@@ -14,4 +14,8 @@ class Producto extends Eloquent {
          {
          	return $this->hasoMany('Empresa');
          }
+         
+         public function historials(){
+             return $this->belongsTo('Historial');
+         }
 }

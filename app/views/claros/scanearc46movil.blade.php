@@ -14,7 +14,7 @@
 		<div CLASS="titulo-bienvenido">Cambio de Estado Ciclo 46 Movil</div>
 
                 <center>{{ Form::open(array(
-            'action'=>'ClaroController@postScanearciclo',
+            'action'=>'scanear-ciclo',
             'method'=>'POST',
             'files' => true,
             'role'=>'form',
@@ -23,7 +23,9 @@
             
             
             {{Form::input('text','id','',array("id"=>"newestado"))}}
-            {{Form::input('hidden','ciclo','6',array("id"=>"campo"))}}
+            {{Form::input('hidden','ciclo','2',array("id"=>"campo"))}}
+            {{Form::select('mes',$mes)}}
+            {{Form::input('hidden','year',date('Y'),array("id"=>"year"))}}
             {{Form::input('submit',null,'Scanear',array('class'=>'btn btn-danger '))}}
 {{Form::close()}}</center>
 		
