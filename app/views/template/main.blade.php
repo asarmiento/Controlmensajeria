@@ -10,7 +10,7 @@
 </ul>
     <div class="menu-cliente" id=""> 
 
-    <div class="menu-tittle">| Clientes ::
+    <div class="menu-tittle">| Clientes -
     </div>   
         
     <ul class="nav">  
