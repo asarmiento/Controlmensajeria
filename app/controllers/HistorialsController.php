@@ -116,6 +116,7 @@ class HistorialsController extends \BaseController {
 				$value->comentario_ciudad,
 				$value->observaciones->name
 				);
+	
 //
 		endforeach;
 		
