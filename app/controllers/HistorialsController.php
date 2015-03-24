@@ -119,6 +119,7 @@ class HistorialsController extends \BaseController {
 				$value->direccion,
 				$value->comentario_ciudad
 				);
+	
 //
 		endforeach;
 		
