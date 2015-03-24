@@ -170,7 +170,7 @@ class EmpresasController extends \BaseController {
             if(empty($dataExcel['empleados'])):
                 $datos_empresas->empleados_id =  null;
              else:
-                $datos_empresas->observaciones_id = $dataExcel['empleados'];
+                $datos_empresas->empleados_id = $dataExcel['empleados'];
             endif;
             $datos_empresas->save();
         endforeach;
