@@ -14,7 +14,7 @@
     </div>   
         
     <ul class="nav">  
-         @if(Auth::user()->type_users_id=='1') 
+         
         <li class="dropdown">                  
             <a href="#" class="boton-cliente" data-toggle="dropdown">Banco Occidente<span class="caret"></span></a>  
             <ul class="dropdown-menu" role="menu">                        
@@ -89,29 +89,12 @@
         <li class="dropdown">                   
             <a href="#" class="boton-cliente" data-toggle="dropdown">Opciones&nbsp;<span class=" glyphicon glyphicon-cog"></span></a>   
             <ul class="dropdown-menu" role="menu">    
-                <li>{{ HTML::link('/mensajeros/', 'Mensajeros') }}</li>  
-                <li>{{ HTML::link('/setup/ligar', 'Relacionar Estado Observación') }}</li>  
+                <li>{{ HTML::link('/empleados/', 'Empleados') }}</li>  
+                <li><a href='{{ Route('lista-observacion') }}'>Observaciones </a></li>  
                 <li>{{ HTML::link('/logout', 'Cerrar sesión') }}</li>       
             </ul>              
-        </li>   
-         @endif
-         @if(Auth::user()->tipos_id=='3' OR Auth::user()->tipos_id=='2') 
-        <li class="dropdown">   
-            <a href="#" class="boton-cliente" data-toggle="dropdown">Claro<span class="caret"></span></a>   
-            <ul class="dropdown-menu" role="menu">
-                <li><a>{{ HTML::link('/claros/', 'Administración') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c48', 'Ciclo C-48') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c46tv', 'Ciclo C-46 TV') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c46movil', 'Ciclo C-46 Movil') }}</a></li>   
-            </ul>               
-        </li>    
-        <<li class="dropdown">                   
-            <a href="#" class="boton-cliente" data-toggle="dropdown">Opciones&nbsp;<span class=" glyphicon glyphicon-cog"></span></a>   
-            <ul class="dropdown-menu" role="menu">    
-                <li>{{ HTML::link('/logout', 'Cerrar sesión') }}</li>       
-            </ul>              
-        </li>   
-         @endif
+        </li>  
+
     </ul>     
        
 </div><!-- /.navbar-collapse -->   

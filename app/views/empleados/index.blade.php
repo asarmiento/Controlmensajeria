@@ -14,7 +14,7 @@
 <hr>
 <div class="right">
 {{ Form::open(array(
-            'action'=>'MensajeroController@getIndex',
+            'action'=>'registrar-empleados',
             'method'=>'GET',
             'role'=>'form',
             'class'=>'form-inline'
@@ -30,7 +30,7 @@
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>Id</th>
                 <th>Nombre</th>
                 <th>Ciudad</th>
                 <th>Cedula</th>
@@ -40,9 +40,9 @@
             </tr>
         </thead>
         <tbody><?php $i=0; ?>
-            @foreach($empleados AS $datos) <?php $i++; ?>
+            @foreach($empleados AS $datos) 
             <tr>
-                <td>{{$i}}</td>
+                <td>{{$datos->id}}</td>
                 <td>{{ $datos->fname; }} {{ $datos->sname; }} {{ $datos->flast; }} {{ $datos->slast; }}</td>
                 <td>{{ $datos->ciudad; }}</td>
                 <td>{{ $datos->cedula; }}</td>
@@ -57,6 +57,6 @@
             @endforeach
         </tbody>
     </table>
-    <div class="pagination"><li>{{ $resultado->links() }}<li></div>
+    <div class="pagination">{{ $empleados->links() }}</div>
 </div>
 @stop

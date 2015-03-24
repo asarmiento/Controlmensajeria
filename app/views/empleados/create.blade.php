@@ -12,19 +12,10 @@
 <div>
     @if(isset($datos))
     <div class="text text-info "><span class="glyphicon glyphicon-ok"></span> Se Guardo con exito </div>
-    <div class="right">
-{{ Form::open(array(
-            'action'=>'MensajeroController@getIndex',
-            'method'=>'GET',
-            'role'=>'form',
-            'class'=>'form-inline'
-            ))}}
-            {{Form::input('submit',null,'Agregar +',array('class'=>'btn btn-danger '))}}
-{{Form::close()}}
-</div>
+ 
     @else
         {{ Form::open(array(
-                'action'=>'MensajeroController@postCreate',
+                'action'=>'guardar-empleados',
                 'method'=>'post',
                 'role'=>'form',
                 'class'=>'add-on'
@@ -61,26 +52,15 @@
         </div>
         <div class="form-group">
             {{Form::label('Ciudad:')}} 
-            <select name="ciudad">
-                <option value="">Elija una Ciudad</option>
-                @foreach(Ciudade::all() AS $ciudad) 
-                <option value='{{$ciudad->id}}'>{{$ciudad->name}}</option>
-                @endforeach
-            </select>
-            {{$errors->first('ciudad')}}
+            {{Form::select('ciudades_id',$ciudades)}} 
+           
+            {{$errors->first('ciudades_id')}}
         </div>
-        <div class="input-prepend">
-            {{Form::label('Estado:')}} 
-             <select name="estado">
-                <option value="1">Activo</option>
-                <option value="0">Desactivar</option>
-            </select>
-            {{$errors->first('foranea')}}
-        </div>
-        
+ 
         <div>
             {{Form::submit('Guardar',array('class'=>'btn btn-success'))}} 
         </div>
         {{Form::close()}} 
    @endif     
 </div>
+@stop

@@ -109,7 +109,7 @@ class HistorialsController extends \BaseController {
 				$value->tipo_cliente,
 				$value->telefono,
 				$value->name_cliente,
-				$value->ciudades->name,
+				$value->ciudades_id,
 				$value->observaciones->estados->name,
 				$value->observaciones->name,
 				$value->comentario,
@@ -117,7 +117,8 @@ class HistorialsController extends \BaseController {
 				$value->fecha_recibido,
 				$value->monto,
 				$value->direccion,
-				$value->comentario_ciudad
+				$value->comentario_ciudad,
+				$value->empleados_id
 				);
 	
 //

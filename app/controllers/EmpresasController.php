@@ -160,9 +160,18 @@ class EmpresasController extends \BaseController {
             $datos_empresas->direccion = $dataExcel['direccion'];
             $datos_empresas->comentario_ciudad = $dataExcel['comentario_ciudad'];
             $datos_empresas->ciudades_id = $this->convertionCiudad($dataExcel['ciudad']);
-            $datos_empresas->observaciones_id = 16;
             $datos_empresas->historials_id = $historial;
-            $datos_empresas->empleados_id = null;
+            
+            if(empty($dataExcel['observaciones'])):
+                $datos_empresas->observaciones_id = 16;
+            else:
+                $datos_empresas->observaciones_id = $dataExcel['observaciones'];
+            endif;
+            if(empty($dataExcel['empleados'])):
+                $datos_empresas->empleados_id =  null;
+             else:
+                $datos_empresas->observaciones_id = $dataExcel['empleados'];
+            endif;
             $datos_empresas->save();
         endforeach;
         return Redirect::to('claro/ciclo')->with('messege','se guardo con exito!!');

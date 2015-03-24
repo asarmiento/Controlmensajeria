@@ -32,6 +32,9 @@ Route::group(array('before' => 'auth'), function() {
     Route::get('historial-productos/{id}',['as'=>'historial-productos','uses'=>'HistorialsController@index']);
     Route::put('historial-delete/{id}',['as'=>'historial-delete','uses'=>'HistorialsController@destroy']);
     Route::get('descarga-productos/{id}',['as'=>'descarga-productos','uses'=>'HistorialsController@descargasProducto']);
+    Route::get('empleados/registrar-empleados',['as'=>'registrar-empleados','uses'=>'EmpleadoController@create']);
+    Route::post('empleados/guardar-empleados',['as'=>'guardar-empleados','uses'=>'EmpleadoController@store']);
+    Route::get('observaciones/lista-observacion',['as'=>'lista-observacion','uses'=>'ObservacionController@index']);
     
     
     

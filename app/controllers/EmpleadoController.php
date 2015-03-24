@@ -11,7 +11,7 @@ class EmpleadoController extends BaseController {
 	public function index()
 	{
             $empleados = Empleado::paginate(15);
-            return View::make('empleados.index', compact($empleados));
+            return View::make('empleados.index', compact('empleados'));
 	}
 
 	/**
@@ -22,7 +22,8 @@ class EmpleadoController extends BaseController {
 	 */
 	public function create()
 	{
-		//
+		$ciudades = Ciudade::lists('name','id');
+		return View::make('empleados.create',compact('ciudades'));
 	}
 
 	/**
@@ -33,7 +34,24 @@ class EmpleadoController extends BaseController {
 	 */
 	public function store()
 	{
-		//
+		$empleados = Input::all();
+		$empleado = new Empleado;
+		/* Validamos los datos para guardar tabla menu */
+        if ($empleado->isValid((array) $empleados)):
+        	dd($empleados);
+        	$empleado->cedula =$empleados;
+        $empleado->fname=$empleados;
+        $empleado->sname=$empleados;
+        $empleado->flast=$empleados;
+        $empleado->slast=$empleados;
+        $empleado->celular=$empleados;
+        $empleado->ciudades_id=$empleados;
+		$empleado->save($empleados);
+		/* Enviamos el mensaje de guardado correctamente */
+            return $this->exito('Los datos se guardaron con exito!!!');
+        	endif;
+		 /* Enviamos el mensaje de error */
+        return $this->errores($empleado->errors);
 	}
 
 	/**
