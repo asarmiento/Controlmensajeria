@@ -111,14 +111,14 @@ class HistorialsController extends \BaseController {
 				$value->name_cliente,
 				$value->ciudades_id,
 				$value->observaciones->estados->name,
-				$value->observaciones->name,
+				$value->observaciones->id,
 				$value->comentario,
 				$value->fecha_entregado,
 				$value->fecha_recibido,
 				$value->monto,
 				$value->direccion,
 				$value->comentario_ciudad,
-				$value->empleados_id
+				$value->empleados->id
 				);
 	
 //
