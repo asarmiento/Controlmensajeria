@@ -158,7 +158,7 @@ class EmpresasController extends \BaseController {
             $datos_empresas->fecha_recibido = $dataExcel['fecha_recibido'];
             $datos_empresas->monto = $dataExcel['monto'];
             $datos_empresas->direccion = $dataExcel['direccion'];
-            $datos_empresas->comentario_ciudad = $dataExcel['foranea'];
+            $datos_empresas->comentario_ciudad = $dataExcel['comentario_ciudad'];
             $datos_empresas->ciudades_id = $this->convertionCiudad($dataExcel['ciudad']);
             $datos_empresas->observaciones_id = 16;
             $datos_empresas->historials_id = $historial;

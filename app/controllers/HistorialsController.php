@@ -94,12 +94,14 @@ class HistorialsController extends \BaseController {
 			'Telefono',
 			'Nombre Cliente',
 			'Ciudad',
+'estado',
+'observaciones',
 			'Comentario',
 			'Fecha Entrega',
 			'fecha recibido',
 			'monto',
 			'direccion',
-			'comentario ciudad','observaciones','empleados'));
+			'comentario ciudad','empleados'));
 		foreach ($historial->datosEmpresas as $value):  
 			
 			$data[]=
@@ -108,13 +110,14 @@ class HistorialsController extends \BaseController {
 				$value->telefono,
 				$value->name_cliente,
 				$value->ciudades->name,
+				$value->observaciones->estados->name,
+				$value->observaciones->name,
 				$value->comentario,
 				$value->fecha_entregado,
 				$value->fecha_recibido,
 				$value->monto,
 				$value->direccion,
-				$value->comentario_ciudad,
-				$value->observaciones->name
+				$value->comentario_ciudad
 				);
 //
 		endforeach;
