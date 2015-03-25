@@ -148,22 +148,57 @@ class EmpresasController extends \BaseController {
          //   dd($data);
         foreach ($data AS $dataExcel):
             $datos_empresas = new DatosEmpresa;
-            $datos_empresas->barra = '';
-            $datos_empresas->codigo = $dataExcel['codigo'];
-            $datos_empresas->tipo_cliente = $dataExcel['tipo_cliente'];
-            $datos_empresas->telefono = $dataExcel['telefono'];
-            $datos_empresas->name_cliente = $dataExcel['nombre_cliente'];
-            $datos_empresas->comentario = $dataExcel['comentario'];
-            $datos_empresas->fecha_entregado = $dataExcel['fecha_entrega'];
-            $datos_empresas->fecha_recibido = $dataExcel['fecha_recibido'];
-            $datos_empresas->monto = $dataExcel['monto'];
-            $datos_empresas->direccion = $dataExcel['direccion'];
-            $datos_empresas->comentario_ciudad = $dataExcel['comentario_ciudad'];
-            $datos_empresas->empleados_id = $dataExcel['empleados'];
-            $datos_empresas->observaciones_id = $dataExcel['observaciones'];
-            $datos_empresas->ciudades_id = $this->convertionCiudad($dataExcel['ciudad']);
-            $datos_empresas->historials_id = $historial;
-            
+            $datos_empresas->barra = null;
+            if(empty($dataExcel['codigo'])):
+                $datos_empresas->codigo = null;
+            else:
+               $datos_empresas->codigo = $dataExcel['codigo'];
+            endif;
+            if(empty($dataExcel['tipo_cliente'])):
+                $datos_empresas->tipo_cliente = null;
+            else:
+                $datos_empresas->tipo_cliente = $dataExcel['tipo_cliente'];
+            endif;
+            if(empty($dataExcel['telefono'])):
+                $datos_empresas->telefono = null;
+            else:
+                $datos_empresas->telefono = $dataExcel['telefono'];
+            endif;
+            if(empty($dataExcel['nombre_cliente'])):
+               $datos_empresas->name_cliente = null;
+            else:
+               $datos_empresas->name_cliente = $dataExcel['nombre_cliente'];
+            endif;
+            if(empty($dataExcel['comentario'])):
+                $datos_empresas->comentario = null;
+            else:
+                $datos_empresas->comentario = $dataExcel['comentario'];
+            endif;
+            if(empty($dataExcel['fecha_entrega'])):
+                $datos_empresas->fecha_entregado = null;
+            else:
+                $datos_empresas->fecha_entregado = $dataExcel['fecha_entrega'];
+            endif;
+            if(empty($dataExcel['fecha_recibido'])):
+                $datos_empresas->fecha_recibido = null;
+            else:
+                $datos_empresas->fecha_recibido = $dataExcel['fecha_recibido'];
+            endif;
+            if(empty($dataExcel['monto'])):
+                $datos_empresas->monto = null;
+           else:
+                $datos_empresas->monto = $dataExcel['monto'];
+            endif;
+            if(empty($dataExcel['direccion'])):
+                $datos_empresas->direccion = null;
+           else:
+                $datos_empresas->direccion = $dataExcel['direccion'];
+            endif;
+            if(empty($dataExcel['comentario_ciudad'])):
+                $datos_empresas->comentario_ciudad = null;
+           else:
+                $datos_empresas->comentario_ciudad = $dataExcel['comentario_ciudad'];
+            endif;
             if(empty($dataExcel['observaciones'])):
                 $datos_empresas->observaciones_id = 16;
             else:
@@ -174,6 +209,8 @@ class EmpresasController extends \BaseController {
              else:
                 $datos_empresas->observaciones_id = $dataExcel['empleados'];
             endif;
+            $datos_empresas->ciudades_id = $this->convertionCiudad($dataExcel['ciudad']);
+            $datos_empresas->historials_id = $historial;
             $datos_empresas->save();
         endforeach;
         return Redirect::to('claro/ciclo')->with('messege','se guardo con exito!!');
@@ -206,7 +243,7 @@ class EmpresasController extends \BaseController {
 
         return false;
     }
-    
+
     public function ListaDatosEmpresas(){
          $datosEmpresas = DatosEmpresa::paginate();
         return View::make('claros.listaDatosEmpresas',compact('datosEmpresas'));

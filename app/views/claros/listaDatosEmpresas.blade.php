@@ -20,8 +20,9 @@
 
 </div>
 
-<div class="right">
-<form class="navbar-form navbar-left" role="search">
+<div >
+<form class="" role="search">
+   
   <div class="form-group">
     <input type="text" class="form-control" placeholder="Search">
   </div>
