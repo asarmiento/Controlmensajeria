@@ -8,8 +8,8 @@
 class Empleado extends Eloquent{
     	protected $fillable = ['fname','sname','flast','slast','celular','cedula','ciudades_id'];
         
-         public static $rules=['fname'=>'required','sname'=>'required','flast'=>'required','slast'=>'required','celular'=>'required','cedula'=>'required','ciudades_id'=>'required'];
-         
+        public $errors;
+
          public function Ciudades()
          {
              return $this->hasMany('Ciudade');
@@ -28,7 +28,7 @@ class Empleado extends Eloquent{
             $rules['cedula'] .= ',cedula,' . $this->id;
         }
 
-        $validator = \Validator::make($data, $rules);
+        $validator = Validator::make($data, $rules);
         if ($validator->passes()) {
             return true;
         }
@@ -36,6 +36,10 @@ class Empleado extends Eloquent{
         $this->errors = $validator->errors();
 
         return false;
+    }
+    public function nameCompleto(){
+
+        return $this->fname.' '.$this->sname.' '.$this->flast.' '.$this->slast;
     }
 }
 

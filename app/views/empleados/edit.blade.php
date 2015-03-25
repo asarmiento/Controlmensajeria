@@ -10,6 +10,13 @@
 @stop
 @section('container') 
 <div>
+    <?php
+
+    if ($empleado->exists):
+        $form_data = array('route' => array('update-empleados'), 'method' => 'post');
+    endif;
+
+?>
     @if ($errors->any())
     <div class="alert alert-danger">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -22,40 +29,32 @@
     </div>
   @endif
    
-        {{ Form::open(array(
-                'action'=>'guardar-empleados',
-                'method'=>'post',
-                'role'=>'form',
-                'class'=>'add-on'
-                ))}}
+        {{ Form::model($empleado,$form_data,array('role'=>'form','class'=>'add-on'))}}
         <div class="form-group">
             {{Form::label('Primer Nombre:')}}       
-            {{Form::input('text','fname','',array('class'=>'','id'=>''))}}   
-         
+            {{Form::input('text','fname',null,array('class'=>'','id'=>''))}}  
+            {{Form::input('hidden','id',$empleado->id,array('class'=>'','id'=>''))}}  
         </div>
         <div class="form-group">
             {{Form::label('Segundo Nombre:')}} 
-            {{Form::input('text','sname','',array('class'=>'input-prepend input-append'))}} 
-         
+            {{Form::input('text','sname',null,array('class'=>'input-prepend input-append'))}} 
         </div>
         <div class="form-group">
             {{Form::label('Primer Apellido:')}} 
-            {{Form::input('text','flast','',array('class'=>''))}} 
-          
+            {{Form::input('text','flast',null,array('class'=>''))}} 
         </div>
         <div class="input-group">
             {{Form::label('Segundo Apellido:')}} 
-            {{Form::input('text','slast','',array('class'=>''))}} 
-      
+            {{Form::input('text','slast',null,array('class'=>''))}} 
         </div>
         <div class="input-group">
             {{Form::label('Cedula:')}} 
-            {{Form::input('text','cedula','',array('class'=>''))}} 
+            {{Form::input('text','cedula',null,array('class'=>''))}} 
  
         </div>
         <div class="input-group">
             {{Form::label('Celular:')}} 
-            {{Form::input('text','celular','',array('class'=>''))}} 
+            {{Form::input('text','celular',null,array('class'=>''))}} 
     
         </div>
         <div class="form-group">

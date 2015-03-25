@@ -35,24 +35,18 @@ class EmpleadoController extends BaseController {
 	public function store()
 	{
 		$empleados = Input::all();
-		$empleado = new Empleado;
+		$empleado = new Empleado($empleados);
+		
 		/* Validamos los datos para guardar tabla menu */
         if ($empleado->isValid((array) $empleados)):
-        	dd($empleados);
-        	$empleado->cedula =$empleados;
-        $empleado->fname=$empleados;
-        $empleado->sname=$empleados;
-        $empleado->flast=$empleados;
-        $empleado->slast=$empleados;
-        $empleado->celular=$empleados;
-        $empleado->ciudades_id=$empleados;
-		$empleado->save($empleados);
+        	$empleado->fill($empleados);
+		$empleado->save();
 		/* Enviamos el mensaje de guardado correctamente */
-            return $this->exito('Los datos se guardaron con exito!!!');
+            return Redirect::route('ver-empleados')->with(array('message'=>'Los datos se guardaron con exito!!!'));
         	endif;
 		 /* Enviamos el mensaje de error */
-        return $this->errores($empleado->errors);
-	}
+		 return Redirect::route('registrar-empleados')->withInput()->withErrors($empleado->errors);
+    }
 
 	/**
 	 * Display the specified resource.
@@ -75,7 +69,11 @@ class EmpleadoController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$empleado = Empleado::find($id);
+
+		$ciudades = Ciudade::lists('name','id');
+		
+		return View::make('empleados.edit',compact('empleado','ciudades'));
 	}
 
 	/**
@@ -87,7 +85,17 @@ class EmpleadoController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$empleados = Input::all();
+
+		$empleado =  Empleado::find($empleados['id']);
+		
+		/* Validamos los datos para guardar tabla menu */
+			$empleado->fill($empleados);
+			$empleado->save();
+
+		/* Enviamos el mensaje de guardado correctamente */
+            return Redirect::route('ver-empleados')->with(array('message'=>'Los datos se guardaron con exito!!!'));
+       
 	}
 
 	/**

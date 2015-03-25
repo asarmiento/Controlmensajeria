@@ -21,11 +21,16 @@
 </div>
 
 <div class="right">
-
+<form class="navbar-form navbar-left" role="search">
+  <div class="form-group">
+    <input type="text" class="form-control" placeholder="Search">
+  </div>
+  <button type="submit" class="btn btn-default">Buscar</button>
+</form>
 </div>
 
 
-<div class="right">
+<div class="left">
     <li class="dropdown">                  
         <a href="#" class="btn btn-danger" data-toggle="dropdown">Reportes +<span class="caret"></span></a>  
         <ul class="dropdown-menu" role="menu">                        
@@ -44,7 +49,7 @@
     <thead>
         <tr>
             <th width="57">{{('#')}}</th>
-            <th width="211">{{('Código')}}</th>
+            <th width="211">Código</th>
             <th width="157">Nombre</th>
             <th width="157">Tipo Cliente</th>
             <th width="182">Estado</th>
@@ -57,7 +62,7 @@
    <tbody>    
         <!-- inicio mostramos todos los datos de la tabla catalogo -->
         <?php $i=0; ?>
-        @foreach($datosEmpresas As $datos) <?php $i++;  ?>
+        @foreach($datosEmpresas As $datos) <?php $i++;   ?>
         <tr>  
             <td>{{$i}}</td>
             <td>{{($datos->codigo)}}</td>
@@ -78,7 +83,7 @@
             </td>
 
             <!-- Empleados -->
-            <td><div id="mensajero_{{$datos->id}}" class="mensajero"></div>
+            <td><div id="mensajero_{{$datos->id}}" class="mensajero">@if(($datos->empleados_id==null))  @else {{$datos->empleados->nameCompleto()}} @endif </div>
                 </td>
                 <td>
                    <div >{{($datos->ciudades->name)}}</div>

@@ -33,7 +33,10 @@ Route::group(array('before' => 'auth'), function() {
     Route::put('historial-delete/{id}',['as'=>'historial-delete','uses'=>'HistorialsController@destroy']);
     Route::get('descarga-productos/{id}',['as'=>'descarga-productos','uses'=>'HistorialsController@descargasProducto']);
     Route::get('empleados/registrar-empleados',['as'=>'registrar-empleados','uses'=>'EmpleadoController@create']);
+    Route::get('empleados',['as'=>'ver-empleados','uses'=>'EmpleadoController@index']);
     Route::post('empleados/guardar-empleados',['as'=>'guardar-empleados','uses'=>'EmpleadoController@store']);
+    Route::get('empleados/editar-empleados/{id}',['as'=>'editar-empleados','uses'=>'EmpleadoController@edit']);
+    Route::post('empleados/update-empleados/{id}',['as'=>'update-empleados','uses'=>'EmpleadoController@update']);
     Route::get('observaciones/lista-observacion',['as'=>'lista-observacion','uses'=>'ObservacionController@index']);
     
     

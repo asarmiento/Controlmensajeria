@@ -92,7 +92,7 @@ class EmpresasController extends \BaseController {
      */
     public function SaveClaro() {
         set_time_limit(0);
-        ini_set('memory_limit', '10240M');
+      //  ini_set('memory_limit', '90240M');
         /* de claramos las variables que recibimos por post */
         $mes = Input::get('mes');
         $year = Input::get('year');
@@ -145,7 +145,7 @@ class EmpresasController extends \BaseController {
 
         $datos = DatosEmpresa::where('historials_id', '=', $historial)->delete();
  
-
+         //   dd($data);
         foreach ($data AS $dataExcel):
             $datos_empresas = new DatosEmpresa;
             $datos_empresas->barra = '';
@@ -159,6 +159,8 @@ class EmpresasController extends \BaseController {
             $datos_empresas->monto = $dataExcel['monto'];
             $datos_empresas->direccion = $dataExcel['direccion'];
             $datos_empresas->comentario_ciudad = $dataExcel['comentario_ciudad'];
+            $datos_empresas->empleados_id = $dataExcel['empleados'];
+            $datos_empresas->observaciones_id = $dataExcel['observaciones'];
             $datos_empresas->ciudades_id = $this->convertionCiudad($dataExcel['ciudad']);
             $datos_empresas->historials_id = $historial;
             
@@ -170,7 +172,7 @@ class EmpresasController extends \BaseController {
             if(empty($dataExcel['empleados'])):
                 $datos_empresas->empleados_id =  null;
              else:
-                $datos_empresas->empleados_id = $dataExcel['empleados'];
+                $datos_empresas->observaciones_id = $dataExcel['empleados'];
             endif;
             $datos_empresas->save();
         endforeach;
@@ -204,6 +206,7 @@ class EmpresasController extends \BaseController {
 
         return false;
     }
+    
     public function ListaDatosEmpresas(){
          $datosEmpresas = DatosEmpresa::paginate();
         return View::make('claros.listaDatosEmpresas',compact('datosEmpresas'));

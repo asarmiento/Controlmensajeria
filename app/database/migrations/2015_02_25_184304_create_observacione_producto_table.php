@@ -12,11 +12,13 @@ class CreateObservacioneProductoTable extends Migration {
      */
     public function up() {
         Schema::create('observacione_producto', function(Blueprint $table) {
+            $table->increments('id');
             $table->integer('observaciones_id')->unsigned()->index();
             $table->foreign('observaciones_id')->references('id')->on('observaciones')->onDelete('no action');
             $table->integer('productos_id')->unsigned()->index();
             $table->foreign('productos_id')->references('id')->on('productos')->onDelete('no action');
-
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
