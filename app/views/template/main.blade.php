@@ -1,4 +1,7 @@
 @extends('template.base')
+@section('tittle')
+El Corso::{{Auth::user()->name.' '.Auth::user()->last}}
+@stop
 @section('content')
 <div  class="container-fluid">
             <div class="row-fluid">
@@ -6,15 +9,14 @@
                 
 <br>
 <ul class="">  
-    <img src="http://sistema.elcorso.hn/asset/img/logo-corso.png" class="img-responsive">
+    <img src="http://systema.elcorso.hn/img/logo-corso.png" class="img-responsive">
 </ul>
-    <div class="menu-cliente" id=""> 
-
-    <div class="menu-tittle">| Clientes -
-    </div>   
+    <div class="menu-cliente"> 
+<?php if(Auth::user()->type_users_id==1): ?>
+        <div class="menu-tittle">| Clientes - {{Auth::user()->name.' '.Auth::user()->last}}</div>   
         
     <ul class="nav">  
-         @if(Auth::user()->type_users_id=='1') 
+         
         <li class="dropdown">                  
             <a href="#" class="boton-cliente" data-toggle="dropdown">Banco Occidente<span class="caret"></span></a>  
             <ul class="dropdown-menu" role="menu">                        
@@ -89,30 +91,26 @@
         <li class="dropdown">                   
             <a href="#" class="boton-cliente" data-toggle="dropdown">Opciones&nbsp;<span class=" glyphicon glyphicon-cog"></span></a>   
             <ul class="dropdown-menu" role="menu">    
-                <li>{{ HTML::link('/mensajeros/', 'Mensajeros') }}</li>  
-                <li>{{ HTML::link('/setup/ligar', 'Relacionar Estado Observaci贸n') }}</li>  
+                <li>{{ HTML::link('/empleados/', 'Empleados') }}</li>  
+                <li><a href='{{ Route('lista-observacion') }}'>Observaciones </a></li>  
                 <li>{{ HTML::link('/logout', 'Cerrar sesi贸n') }}</li>       
             </ul>              
-        </li>   
-         @endif
-         @if(Auth::user()->tipos_id=='3' OR Auth::user()->tipos_id=='2') 
-        <li class="dropdown">   
+        </li>
+        </ul> 
+@elseif(Auth::user()->type_users_id==4)  
+     <div class="menu-tittle">| Clientes - {{Auth::user()->name.' '.Auth::user()->last}}</div>   
+        
+    <ul class="nav">  
+         <li class="dropdown">   
             <a href="#" class="boton-cliente" data-toggle="dropdown">Claro<span class="caret"></span></a>   
             <ul class="dropdown-menu" role="menu">
-                <li><a>{{ HTML::link('/claros/', 'Administraci贸n') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c48', 'Ciclo C-48') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c46tv', 'Ciclo C-46 TV') }}</a></li>
-                <li><a>{{ HTML::link('/claros/c46movil', 'Ciclo C-46 Movil') }}</a></li>   
-            </ul>               
-        </li>    
-        <<li class="dropdown">                   
-            <a href="#" class="boton-cliente" data-toggle="dropdown">Opciones&nbsp;<span class=" glyphicon glyphicon-cog"></span></a>   
-            <ul class="dropdown-menu" role="menu">    
-                <li>{{ HTML::link('/logout', 'Cerrar sesi贸n') }}</li>       
-            </ul>              
-        </li>   
-         @endif
-    </ul>     
+                <li><a>{{ HTML::link('/claros/', 'Administraci髇') }}</a></li>
+                <li><a>{{ HTML::link('/claro/ciclo', 'Ciclo') }}</a></li>
+           </ul>               
+        </li> 
+        </ul> 
+@endif
+        
        
 </div><!-- /.navbar-collapse -->   
 

@@ -29,9 +29,21 @@ Route::group(array('before' => 'auth'), function() {
     Route::post('claro/importar-ciclo',['as'=>'save-ciclo','uses'=>'EmpresasController@SaveClaro']);
     Route::post('claro/scanear-ciclo',['as'=>'scanear-ciclo','uses'=>'EmpresasController@scanearCiclo']);
     Route::get('claro/ciclo','EmpresasController@ListaDatosEmpresas');
+   // Route::get('claro/ciclo',['as'=>'claros-listaDatosEmpresas','EmpresasController@ListaDatosEmpresas']);
+
     Route::get('historial-productos/{id}',['as'=>'historial-productos','uses'=>'HistorialsController@index']);
     Route::put('historial-delete/{id}',['as'=>'historial-delete','uses'=>'HistorialsController@destroy']);
     Route::get('descarga-productos/{id}',['as'=>'descarga-productos','uses'=>'HistorialsController@descargasProducto']);
+
+
+    Route::get('empleados/registrar-empleados',['as'=>'registrar-empleados','uses'=>'EmpleadoController@create']);
+    Route::get('empleados',['as'=>'ver-empleados','uses'=>'EmpleadoController@index']);
+    Route::post('empleados/guardar-empleados',['as'=>'guardar-empleados','uses'=>'EmpleadoController@store']);
+    Route::get('empleados/editar-empleados/{id}',['as'=>'editar-empleados','uses'=>'EmpleadoController@edit']);
+    Route::post('empleados/update-empleados/{id}',['as'=>'update-empleados','uses'=>'EmpleadoController@update']);
+
+
+    Route::get('observaciones/lista-observacion',['as'=>'lista-observacion','uses'=>'ObservacionController@index']);
     
     
     

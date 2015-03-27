@@ -24,6 +24,30 @@ class UserTableSeeder extends Seeder {
             'email' => 'anwarsarmiento@gmail.com',
             'password' => Hash::make('F4cc0unt')
         ));
+        User::create(array(
+            'name' => 'Carlos',
+            'last' => 'Ramos',
+            'type_users_id' => 1,
+            'empresas_id' => 1,
+            'email' => 'carl0s_ram0s@yahoo.com',
+            'password' => Hash::make('carl0s')
+        ));
+        User::create(array(
+            'name' => 'David',
+            'last' => 'Osorio',
+            'type_users_id' => 3,
+            'empresas_id'=>1,
+            'email' => 'david.osorio@claro.com.hn',
+            'password' => Hash::make('dav1d')
+        ));
+        User::create(array(
+            'name' => 'Wendy',
+            'last' => 'Sauceda',
+            'type_users_id' => 3,
+            'empresas_id'=>1,
+            'email' => 'wendy.sauceda@claro.com.hn',
+            'password' => Hash::make('w3ndy')
+        ));
     }
 
 }

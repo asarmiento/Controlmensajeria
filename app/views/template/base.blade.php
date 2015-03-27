@@ -3,6 +3,8 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+         <link rel="shortcut icon" href="img/logo-claro.png" />
+        <title>@yield('tittle')</title>
         {{ HTML::style('bootstrap/css/bootstrap.css') }}
         {{ HTML::style('jquery-ui/jquery-ui.css') }}
         {{ HTML::style('css/general.css') }}

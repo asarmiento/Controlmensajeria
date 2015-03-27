@@ -11,7 +11,7 @@ class EmpleadoController extends BaseController {
 	public function index()
 	{
             $empleados = Empleado::paginate(15);
-            return View::make('empleados.index', compact($empleados));
+            return View::make('empleados.index', compact('empleados'));
 	}
 
 	/**
@@ -22,7 +22,8 @@ class EmpleadoController extends BaseController {
 	 */
 	public function create()
 	{
-		//
+		$ciudades = Ciudade::lists('name','id');
+		return View::make('empleados.create',compact('ciudades'));
 	}
 
 	/**
@@ -33,8 +34,19 @@ class EmpleadoController extends BaseController {
 	 */
 	public function store()
 	{
-		//
-	}
+		$empleados = Input::all();
+		$empleado = new Empleado($empleados);
+		
+		/* Validamos los datos para guardar tabla menu */
+        if ($empleado->isValid((array) $empleados)):
+        	$empleado->fill($empleados);
+		$empleado->save();
+		/* Enviamos el mensaje de guardado correctamente */
+            return Redirect::route('ver-empleados')->with(array('message'=>'Los datos se guardaron con exito!!!'));
+        	endif;
+		 /* Enviamos el mensaje de error */
+		 return Redirect::route('registrar-empleados')->withInput()->withErrors($empleado->errors);
+    }
 
 	/**
 	 * Display the specified resource.
@@ -57,7 +69,11 @@ class EmpleadoController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$empleado = Empleado::find($id);
+
+		$ciudades = Ciudade::lists('name','id');
+		
+		return View::make('empleados.edit',compact('empleado','ciudades'));
 	}
 
 	/**
@@ -69,7 +85,17 @@ class EmpleadoController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$empleados = Input::all();
+
+		$empleado =  Empleado::find($empleados['id']);
+		
+		/* Validamos los datos para guardar tabla menu */
+			$empleado->fill($empleados);
+			$empleado->save();
+
+		/* Enviamos el mensaje de guardado correctamente */
+            return Redirect::route('ver-empleados')->with(array('message'=>'Los datos se guardaron con exito!!!'));
+       
 	}
 
 	/**

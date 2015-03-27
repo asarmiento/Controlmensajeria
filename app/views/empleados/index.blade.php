@@ -14,7 +14,7 @@
 <hr>
 <div class="right">
 {{ Form::open(array(
-            'action'=>'MensajeroController@getIndex',
+            'action'=>'registrar-empleados',
             'method'=>'GET',
             'role'=>'form',
             'class'=>'form-inline'
@@ -25,12 +25,19 @@
 
 
 <hr>
-
+ @if(isset($message))
+    <div class="text text-info">
+      <button type="button" class="close" data-dismiss="info">&times;</button>
+     <ul>
+        <li><span class="glyphicon glyphicon-ok"></span> {{$message}}</li>
+     </ul>
+    </div>
+    @endif
 <div >
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
+                <th>Id</th>
                 <th>Nombre</th>
                 <th>Ciudad</th>
                 <th>Cedula</th>
@@ -40,10 +47,10 @@
             </tr>
         </thead>
         <tbody><?php $i=0; ?>
-            @foreach($empleados AS $datos) <?php $i++; ?>
+            @foreach($empleados AS $datos) 
             <tr>
-                <td>{{$i}}</td>
-                <td>{{ $datos->fname; }} {{ $datos->sname; }} {{ $datos->flast; }} {{ $datos->slast; }}</td>
+                <td>{{$datos->id}}</td>
+                <td>{{$datos->fname;}} {{$datos->sname;}} {{$datos->flast;}} {{$datos->slast;}}</td>
                 <td>{{ $datos->ciudad; }}</td>
                 <td>{{ $datos->cedula; }}</td>
                 <td>{{ $datos->celular; }}</td>
@@ -52,11 +59,11 @@
                 @elseif($datos->esatdo==1)
                 <td>Desactivo</td>
                 @endif
-                <td><a class="btn btn-warning "><span class="glyphicon glyphicon-pencil"></span></a></td>
+                <td ><a class="btn btn-primary" href="{{route('editar-empleados', $datos->id)}}" >Editar</a></td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <div class="pagination"><li>{{ $resultado->links() }}<li></div>
+    <div class="pagination">{{ $empleados->links() }}</div>
 </div>
 @stop
