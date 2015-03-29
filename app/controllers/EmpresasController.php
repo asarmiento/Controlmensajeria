@@ -88,141 +88,14 @@ class EmpresasController extends \BaseController {
     }
 
     /**
-     * aqui ejecutamos todos los metodos para agregar un nuevo archivo o reemplazarlo
-     */
-    public function SaveClaro() {
-        set_time_limit(0);
-        ini_set('memory_limit', '20240M');
-        /* de claramos las variables que recibimos por post */
-        $mes = Input::get('mes');
-        $year = Input::get('year');
-        $producto = Input::get('productos_id');
-        $file = Input::file('excel');
-        $url = "files/claro/CICLO" . $producto . str_pad($mes, 2, '0', STR_PAD_LEFT) . $year . ".xlsx";
-
-
-        /* agregamos un nuevo historial y retornamos el ID o buscamos regresamos el ID */
-        $idHistorial = $this->SaveHistorials($mes, $year, $producto, $url);
-
-        /* Corremos el archivo de excel y lo convertimos en un array */
-        $excel = $this->uploadExcel($file, 'claro', 'CICLO' . $producto . str_pad($mes, 2, '0', STR_PAD_LEFT) . $year . '.xlsx');
-
-        return $this->saveExcel($excel, $idHistorial);
-    }
-
-    /**
-     * @author Anwar Sarmiento
-     * @param type $mes
-     * @param type $year
-     * @param type $producto
-     * @return type
-     * @description  Guardamos el historial de los productos 
-     */
-    private function SaveHistorials($mes, $year, $producto, $url) {
-        /* Buscamos ver si ya existe el archivo que se quiere agregar */
-        $verificacion = DB::table('historials')
-                        ->where('mes', '=', $mes)
-                        ->where('year', '=', $year)
-                        ->where('productos_id', '=', $producto)->get();
-        /* si existe enviamos el id */
-        if ($verificacion):
-            return $verificacion[0]->id;
-        endif;
-        /*  de lo contrario agregamos el nuevo historial */
-        $Historial = new Historial;
-        $Historial->mes = $mes;
-        $Historial->year = $year;
-        $Historial->productos_id = $producto;
-        $Historial->url = $url;
-        $Historial->save();
-        /* Retornamos el id de la nueva fila */
-        $id = Historial::all()->last();
-        return $id->id;
-    }
-
-    private function saveExcel($data, $historial) {
-
-        $datos = DatosEmpresa::where('historials_id', '=', $historial)->delete();
-
-        //   dd($data);
-        foreach ($data AS $dataExcel):
-            $datos_empresas = new DatosEmpresa;
-            $datos_empresas->barra = null;
-            if (empty($dataExcel['codigo'])):
-                $datos_empresas->codigo = null;
-            else:
-                $datos_empresas->codigo = $dataExcel['codigo'];
-            endif;
-            if (empty($dataExcel['tipo_cliente'])):
-                $datos_empresas->tipo_cliente = null;
-            else:
-                $datos_empresas->tipo_cliente = $dataExcel['tipo_cliente'];
-            endif;
-            if (empty($dataExcel['telefono'])):
-                $datos_empresas->telefono = null;
-            else:
-                $datos_empresas->telefono = $dataExcel['telefono'];
-            endif;
-            if (empty($dataExcel['nombre_cliente'])):
-                $datos_empresas->name_cliente = null;
-            else:
-                $datos_empresas->name_cliente = $dataExcel['nombre_cliente'];
-            endif;
-            if (empty($dataExcel['comentario'])):
-                $datos_empresas->comentario = null;
-            else:
-                $datos_empresas->comentario = $dataExcel['comentario'];
-            endif;
-            if (empty($dataExcel['fecha_entrega'])):
-                $datos_empresas->fecha_entregado = null;
-            else:
-                $datos_empresas->fecha_entregado = $dataExcel['fecha_entrega'];
-            endif;
-            if (empty($dataExcel['fecha_recibido'])):
-                $datos_empresas->fecha_recibido = null;
-            else:
-                $datos_empresas->fecha_recibido = $dataExcel['fecha_recibido'];
-            endif;
-            if (empty($dataExcel['monto'])):
-                $datos_empresas->monto = null;
-            else:
-                $datos_empresas->monto = $dataExcel['monto'];
-            endif;
-            if (empty($dataExcel['direccion'])):
-                $datos_empresas->direccion = null;
-            else:
-                $datos_empresas->direccion = $dataExcel['direccion'];
-            endif;
-            if (empty($dataExcel['comentario_ciudad'])):
-                $datos_empresas->comentario_ciudad = null;
-            else:
-                $datos_empresas->comentario_ciudad = $dataExcel['comentario_ciudad'];
-            endif;
-            $datos_empresas->ciudades_id = $this->convertionCiudad($dataExcel['ciudad']);
-            if (empty($dataExcel['observaciones'])):
-                $datos_empresas->observaciones_id = 16;
-            else:
-                $datos_empresas->observaciones_id = $dataExcel['observaciones'];
-            endif;
-            $datos_empresas->historials_id = $historial;
-            if (empty($dataExcel['empleados'])):
-                $datos_empresas->empleados_id = null;
-            else:
-                $datos_empresas->empleados_id = $dataExcel['empleados'];
-            endif;
-            $datos_empresas->save();
-        endforeach;
-        return Redirect::to('claro/ciclo')->with('messege', 'se guardo con exito!!');
-    }
-
-    /**
      * 
      * @param type $file
      * @param string $path
      * @param type $fileName
      * @return boolean
+     * 
      */
-    private function uploadExcel($file, $path, $fileName) {
+    public static function uploadExcel($file, $path, $fileName) {
 
         $path = 'files/' . $path;
         if (strtoupper($file->getClientOriginalExtension()) == 'XLSX' || strtoupper($file->getClientOriginalExtension()) == 'XLS'):
@@ -231,25 +104,8 @@ class EmpresasController extends \BaseController {
             $excel = Excel::load($files, function ($reader) {
                         $reader->formatDates(true, 'Y-m-d');
                     })->all();
-         
-        return $excel;
 
-        endif;
-
-        return false;
-    }
-    public function ListaDatosEmpresas() {
-        $datosEmpresas = DatosEmpresa::paginate(100);
-        return View::make('claros.listaDatosEmpresas', compact('datosEmpresas'));
-    }
-
-    /**
-     * Busca las ciudades por nombre y devuelve el id de la ciudad
-     */
-    private function convertionCiudad($ciudad) {
-        $city = Ciudade::where('name', '=', $ciudad)->first();
-        if ($city):
-            return $city->id;
+            return $excel;
         endif;
         return false;
     }
