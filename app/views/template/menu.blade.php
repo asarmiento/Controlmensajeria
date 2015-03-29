@@ -59,10 +59,10 @@
             <li class="dropdown">
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Claro<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{ HTML::link('/claros/', 'Administración') }}</a></li>
-                    <li><a>{{ HTML::link('/claro/ciclo', 'Ciclo C-48') }}</a></li>
-                    <li><a>{{ HTML::link('/claro/ciclo', 'Ciclo C-46 TV') }}</a></li>
-                    <li><a>{{ HTML::link('/claro/ciclo', 'Ciclo C-46 Movil') }}</a></li>
+                    <li><a href="{{ route('claro') }}">Administración</a></li>
+                    <li><a href="{{ route('producto_claro', 'ciclo-c-48') }}">Ciclo C-48</a></li>
+                    <li><a href="{{ route('producto_claro', 'ciclo-c-46-tv') }}">Ciclo C-46-TV</a></li>
+                    <li><a href="{{ route('producto_claro', 'ciclo-c-46-movil') }}">Ciclo C-46-MOVIL</a></li>
                 </ul>
             </li>
             <li class="dropdown">

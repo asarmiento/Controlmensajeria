@@ -1,5 +1,6 @@
 <?php
 
+<<<<<<< HEAD
 class ClaroController extends \BaseController {
 
     /**
@@ -118,6 +119,111 @@ class ClaroController extends \BaseController {
             $datos_empresas->barra = null;
             if (empty($dataExcel['codigo'])):
                 $datos_empresas->codigo = null;
+=======
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+/**
+ * Description of ClaroController
+ *
+ * @author Sistemas Amigables
+ */
+class ClaroController extends BaseController {
+
+    //put your code here
+    public function index() {
+        return View::make('claro.index');
+    }
+    public function importar(){
+        return View::make('claros.importar');
+    }
+
+    public function getC48() {
+        $data = DB::table('ciclos')->where('id', 7)->get();
+
+        $paginacion = DB::table("datos_empresas")
+                ->select('datos_empresas.id', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
+                ->where('empresas_id', 1)
+                ->where('ciclo_id', 7)
+                ->where('contador', ($data[0]->contador - 1))
+                ->orderBy('name', 'ASC')
+                ->paginate(50);
+
+        $ciudad = array('all' => 'All');
+        $drop = array('all' => 'All');
+        $drop[] = DB::table('estados')->lists('name', 'id');
+        $ciudad[] = DB::table('ciudades')->lists('name', 'id');
+        return View::make('claros.c48', array('resultado' => $paginacion, 'estado' => $drop, 'ciudad' => $ciudad));
+    }
+
+    public function postC48() {
+        $data = DB::table('ciclos')->where('id', 7)->get();
+        if (isset($_POST['buscar'])) {
+            $buscar = htmlspecialchars($_POST['buscar']);
+            if ((Session::get('ciudad'))): $ciudad = Session::get('ciudad');
+            else: $ciudad = "";
+            endif;
+            if ((Session::get('estado'))): $estado = Session::get('estado');
+            else: $estado = "";
+            endif;
+
+            if (empty($estado) && empty($ciudad)):
+                $paginacion = DB::table("datos_empresas")
+                        ->select('datos_empresas.id', 'datos_empresas.tipo_cliente', 'datos_empresas.codigo', 'datos_empresas.name_cliente', 'datos_empresas.estado_id', 'datos_empresas.empresas_id', 'datos_empresas.observacion_id', 'datos_empresas.comentario', 'datos_empresas.mensajero_id', 'datos_empresas.ciudad_id')
+                        ->join('ciudades', 'ciudades.id', '=', 'datos_empresas.ciudad_id')
+                        ->where('empresas_id', 1)
+                        ->where('ciclo_id', 7)
+                        ->where('contador', ($data[0]->contador - 1))
+                        ->where('name_cliente', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('codigo', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('name', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('monto', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('fecha_entregado', 'LIKE', '%' . $buscar . '%')
+                        ->orderBy('id', 'DESC')
+                        ->paginate(50);
+
+            elseif (($ciudad > 0) && empty($estado)):
+                $paginacion = DB::table("datos_empresas")
+                        ->where('empresas_id', 1)
+                        ->where('ciclo_id', 7)
+                        ->where('contador', ($data[0]->contador - 1))
+                        ->where('ciudad_id', '=', $ciudad)
+                        ->where('name_cliente', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('codigo', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('monto', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('fecha_entregado', 'LIKE', '%' . $buscar . '%')
+                        ->orderBy('id', 'DESC')
+                        ->paginate(50);
+            elseif (empty($ciudad) && ($estado > 0)):
+                $paginacion = DB::table("datos_empresas")
+                        ->where('empresas_id', 1)
+                        ->where('ciclo_id', 7)
+                        ->where('contador', ($data[0]->contador - 1))
+                        ->where('estado_id', '=', $estado)
+                        ->where('name_cliente', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('codigo', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('monto', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('fecha_entregado', 'LIKE', '%' . $buscar . '%')
+                        ->orderBy('id', 'DESC')
+                        ->paginate(50);
+            elseif (($ciudad > 0) && ($estado > 0)):
+                $paginacion = DB::table("datos_empresas")
+                        ->where('empresas_id', 1)
+                        ->where('ciclo_id', 7)
+                        ->where('contador', ($data[0]->contador - 1))
+                        ->where('estado_id', '=', $estado)
+                        ->where('ciudad_id', '=', $ciudad)
+                        ->where('name_cliente', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('codigo', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('monto', 'LIKE', '%' . $buscar . '%')
+                        ->orwhere('fecha_entregado', 'LIKE', '%' . $buscar . '%')
+                        ->orderBy('id', 'DESC')
+                        ->paginate(50);
+>>>>>>> origin/master
             else:
                 $datos_empresas->codigo = $dataExcel['codigo'];
             endif;

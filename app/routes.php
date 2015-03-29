@@ -18,12 +18,23 @@ Route::get('login', 'AuthController@showLogin');
 // Validamos los datos de inicio de sesiÃ³n.
 Route::post('login', 'AuthController@postLogin');
 Route::get('empleados','EmpleadoController@index');
+
 // Nos indica que las rutas que estÃ¡n dentro de Ã©l sÃ³lo serÃ¡n mostradas si antes el usuario se ha autenticado.
 Route::group(array('before' => 'auth'), function() {
     // Esta serÃ¡ nuestra ruta de bienvenida.
     Route::get('/', function() {
         return View::make('hello');
     });
+
+
+    /**
+     * Routes Claro
+     */
+    
+
+    Route::get('claro', ['as'=> 'claro', 'uses'=>'ClaroController@index']);
+    Route::get('claro/{name}', ['as'=> 'producto_claro', 'uses'=>'ClaroController@getProduct']);
+
     /*Ruta para importar archivos de CLARO */
     Route::get('claro/importar-ciclo/{id}',['as'=>'importar-ciclo','uses'=>'EmpresasController@importarClaro']);
     Route::post('claro/importar-ciclo',['as'=>'save-ciclo','uses'=>'EmpresasController@SaveClaro']);
