@@ -1,11 +1,10 @@
 @extends('template.base')
 
 @section('head')
-	<meta name="description" content="Estado de Cuenta">
+	<meta name="description" content="Administración de Claro">
 	<meta name="author" content="Sistemas Amigables">
-	<title>Estado Cuenta</title>
+	<title>Administración Claro</title>
 @stop
-
 
 @section('content') 
 	<center>
@@ -14,6 +13,7 @@
 		</h2>
 	</center>
 	<hr>
+	@yield('data_products')
 	@if(Auth::user()->type_users_id=="1")
 		<h3><span class="glyphicon glyphicon-list-alt"></span>Ciclos</h3>
 		<a class="btn btn-danger"href="{{route('importar-ciclo',1)}}">Subir Ciclo</a>
@@ -41,5 +41,4 @@
 		<a class="btn btn-danger"href="claros/scanearcambio">Scanear Devolución<br>por Cambio de dirección</a>
 		<a class="btn btn-danger"href="claros/scanearcentro">Scanear Devolución<br>por Cambio de centro de Trabajo</a>
 	@endif
-
 @stop

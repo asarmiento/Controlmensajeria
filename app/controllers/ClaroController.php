@@ -14,9 +14,8 @@
 class ClaroController extends BaseController {
 
     //put your code here
-    public function getIndex() {
-
-        return View::make('claros.index');
+    public function index() {
+        return View::make('claro.index');
     }
     public function importar(){
         return View::make('claros.importar');
