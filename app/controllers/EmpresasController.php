@@ -238,9 +238,8 @@ class EmpresasController extends \BaseController {
 
         return false;
     }
-
     public function ListaDatosEmpresas() {
-        $datosEmpresas = DatosEmpresa::paginate();
+        $datosEmpresas = DatosEmpresa::paginate(100);
         return View::make('claros.listaDatosEmpresas', compact('datosEmpresas'));
     }
 

@@ -1,0 +1,11 @@
+{
+  "name": "Systema",
+  "version": "1.0.0",
+  "description": "App para llevar el control documentario en la empresa El Corso",
+  "author": "Francisco Gamonal",
+  "license": "MIT",
+  "dependencies": {
+     "bootstrap": "~3.3.*",
+     "datatables": "~1.10.*"
+  }
+}

@@ -20,7 +20,7 @@ class AuthController extends BaseController {
             return Redirect::to('/');
         }
         // Mostramos la vista login.blade.php (Recordemos que .blade.php se omite.)
-        return View::make('login');
+        return View::make('form-login');
     }
 
     /**
@@ -52,12 +52,11 @@ class AuthController extends BaseController {
     {
         Auth::logout();
         return Redirect::to('login')
-                    ->with('mensaje_error', 'Tu sesión ha sido cerrada.');
+                    ->with('mensaje_logout', 'Tu sesión ha sido cerrada.');
     }
 
     public function create()
-   {
-      return View::make('form');
-   }
-
+    {
+        return View::make('form');
+    }
 }

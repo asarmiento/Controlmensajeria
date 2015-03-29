@@ -1,4 +1,7 @@
 @extends('template.base')
+@section('tittle')
+El Corso::{{Auth::user()->name.' '.Auth::user()->last}}
+@stop
 @section('content')
 <div  class="container-fluid">
             <div class="row-fluid">
@@ -6,12 +9,11 @@
                 
 <br>
 <ul class="">  
-    <img src="http://sistema.elcorso.hn/asset/img/logo-corso.png" class="img-responsive">
+    <img src="http://systema.elcorso.hn/img/logo-corso.png" class="img-responsive">
 </ul>
-    <div class="menu-cliente" id=""> 
-
-    <div class="menu-tittle">| Clientes -
-    </div>   
+    <div class="menu-cliente"> 
+<?php if(Auth::user()->type_users_id==1): ?>
+        <div class="menu-tittle">| Clientes - {{Auth::user()->name.' '.Auth::user()->last}}</div>   
         
     <ul class="nav">  
          
@@ -93,9 +95,22 @@
                 <li><a href='{{ Route('lista-observacion') }}'>Observaciones </a></li>  
                 <li>{{ HTML::link('/logout', 'Cerrar sesiÃ³n') }}</li>       
             </ul>              
-        </li>  
-
-    </ul>     
+        </li>
+        </ul> 
+@elseif(Auth::user()->type_users_id==4)  
+     <div class="menu-tittle">| Clientes - {{Auth::user()->name.' '.Auth::user()->last}}</div>   
+        
+    <ul class="nav">  
+         <li class="dropdown">   
+            <a href="#" class="boton-cliente" data-toggle="dropdown">Claro<span class="caret"></span></a>   
+            <ul class="dropdown-menu" role="menu">
+                <li><a>{{ HTML::link('/claros/', 'Administración') }}</a></li>
+                <li><a>{{ HTML::link('/claro/ciclo', 'Ciclo') }}</a></li>
+           </ul>               
+        </li> 
+        </ul> 
+@endif
+        
        
 </div><!-- /.navbar-collapse -->   
 
@@ -121,6 +136,10 @@
         </footer>	
             </div>
         </div>
-
-
+        <div class="span10">
+            <br>
+             @yield('container')
+        </div>
+    </div>
+</div>
 @stop

@@ -3,21 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        {{ HTML::style('bootstrap/css/bootstrap.css') }}
-        {{ HTML::style('jquery-ui/jquery-ui.css') }}
-        {{ HTML::style('css/general.css') }}
-        {{ HTML::script('js/jquery-2.1.1.min.js') }}
-        {{ HTML::script('jquery-ui/jquery-ui.js') }}
-        {{ HTML::script('bootstrap/js/bootstrap.min.js') }}
-        {{ HTML::script('js/general.js') }}
-        {{ HTML::script('js/global.js') }}
+        <link rel="shortcut icon" href="img/logo-claro.png" />
+        <title>@yield('tittle')</title>
         @yield('head')
+        {{ HTML::style('node_modules/bootstrap/dist/css/bootstrap.min.css') }}
         @yield('styles')
-        @yield('scripts')
+        {{ HTML::style('css/main.css') }}
     </head>
-    <body> 
-        @yield('content')
-        
-        
+    <body>
+        <main class="row">
+            <section class="nav-wrapper">
+                @include('template.menu')
+            </section>
+            <section class="content-wrapper">
+                @yield('content')
+            </section>
+        </main>
+        @include('template.footer')
+        {{ HTML::script('node_modules/datatables/node_modules/jquery/dist/jquery.min.js') }}
+        {{ HTML::script('node_modules/bootstrap/dist/js/bootstrap.min.js') }}
+        @yield('scripts')
+        {{ HTML::script('js/main.js') }}
     </body>
 </html>

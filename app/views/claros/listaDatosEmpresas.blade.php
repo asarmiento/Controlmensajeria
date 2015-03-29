@@ -1,23 +1,27 @@
 @extends('template.main')
-@section('head')
-<meta name="description" content="Pagina inicio">
-<meta name="author" content="Sistemas Amigables">
-<meta name="keyword" content="palabras, clave">     
-<title>Estado Cuenta</title>
 
+@section('head')
+    <meta name="description" content="Pagina inicio">
+    <meta name="author" content="Sistemas Amigables">
+    <meta name="keyword" content="palabras, clave">     
+    <title>Estado Cuenta</title>
 @stop
 
-@section('title')
-<h1 class="text-lowercase"></h1>
+@section('styles')
+    {{ HTML::style('css/DT_bootstrap.css') }}
+@stop
+
+@section('tittle')
+Movimientos Ciclo
 @stop
 
 @section('container') 
      
-<center><h2><span class="glyphicon glyphicon-list-alt"><br>Ciclo C-48 <img src="http://sistema.elcorso.hn/asset/img/logosclientes/logo-claro.png"></span></h2></center>
+<center><h2><span class="glyphicon glyphicon-list-alt"><br>Ciclo C-48 <img src="http://systema.elcorso.hn/img/logo-claro.png"></span></h2></center>
 
 <div style="center">
 
-
+    <h5>Disculpe las molestias Estamos mejorando la aplicación para servirle mejor...</h5>
 </div>
 
 <div >
@@ -35,8 +39,8 @@
     <li class="dropdown">                  
         <a href="#" class="btn btn-danger" data-toggle="dropdown">Reportes +<span class="caret"></span></a>  
         <ul class="dropdown-menu" role="menu">                        
-            <li><a>{{ HTML::link('/claros/pdfc48', 'Reporte en PDF',array('target'=>'_black')) }}</a></li>    
-            <li><a>{{ HTML::link('/claros/excelc48', 'Reporte en Excel') }}</a></li>    
+            <li><a>Reporte en PDF</a></li>    
+            <li><a>Reporte en Excel</a></li>    
         </ul>               
     </li>               
 </div>
@@ -86,16 +90,25 @@
             <!-- Empleados -->
             <td><div id="mensajero_{{$datos->id}}" class="mensajero">@if(($datos->empleados_id==null))  @else {{$datos->empleados->nameCompleto()}} @endif </div>
                 </td>
+                <!-- Comentario -->
                 <td>
-                   <div >{{($datos->ciudades->name)}}</div>
+                    <div id="recibido-{{$datos->id}}" class="recibido"></div>
                 </td>
-        </tr>
-        @endforeach
-        <!-- Fin de la tabla catalogo -->
-    </tbody>
-</table>
+
+                <!-- Empleados -->
+                <td><div id="mensajero_{{$datos->id}}" class="mensajero">@if(($datos->empleados_id==null))  @else {{$datos->empleados->nameCompleto()}} @endif </div>
+                    </td>
+                    <td>
+                       <div >{{($datos->ciudades->name)}}</div>
+                    </td>
+            </tr>
+            @endforeach
+            <!-- Fin de la tabla catalogo -->
+        </tbody>
+    </table>
+        </div>
+    <div class="pagination">
+        {{$datosEmpresas->appends(array("buscar"=>Input::get("buscar")))->links()}}
     </div>
-<div class="pagination">
-    {{$datosEmpresas->appends(array("buscar"=>Input::get("buscar")))->links()}}
-</div>
 @stop
+

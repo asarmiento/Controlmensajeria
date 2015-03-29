@@ -1,6 +1,5 @@
-@extends('template.main')
+@extends('template.base')
 
-@section('container')
-@parent
-  <center><h3>Bienvenido {{ Auth::user()->nombre_completo(); }}</h3><br></center>
+@section('content')
+	<h3 class="text-center">Bienvenido {{ Auth::user()->nombre_completo() }}</h3>
 @stop
