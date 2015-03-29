@@ -89,7 +89,8 @@ class HistorialsController extends \BaseController {
 		$historial = Historial::find($id);
 		$separar =  explode('/',$historial->url);
 		$quitarExtencion = explode('.',$separar[2]);
-		$data=array(array('Codigo',
+                $data=array();
+		$data[]=array('Codigo',
 			'Tipo Cliente',
 			'Telefono',
 			'Nombre Cliente',
@@ -101,7 +102,7 @@ class HistorialsController extends \BaseController {
 			'fecha recibido',
 			'monto',
 			'direccion',
-			'comentario ciudad','empleados'));
+			'comentario ciudad','empleados');
 		foreach ($historial->datosEmpresas as $value):  
 			
 			$data[]=
@@ -111,7 +112,7 @@ class HistorialsController extends \BaseController {
 				$value->name_cliente,
 				$value->ciudades_id,
 				$value->observaciones->estados->name,
-				$value->observaciones->name,
+				$value->observaciones->id,
 				$value->comentario,
 				$value->fecha_entregado,
 				$value->fecha_recibido,
