@@ -5,7 +5,7 @@ class Empresa extends Eloquent {
         
          public static $rules=['name','logo'];
          
-         public function Productos(){
+         public function productos(){
              
              return $this->hasMany('Producto','empresas_id','id');
          }

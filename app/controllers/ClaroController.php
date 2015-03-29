@@ -78,8 +78,8 @@ class ClaroController extends \BaseController {
     }
     
     public function dataPoduct(){
-        $product = Producto::where('empresas_id','=',1);
-        return View::make('claro.product',  compact('product'));
+        $empresa = Empresas::find(1);
+        return View::make('claro.product',  compact('empresa'));
     }
 
     /**

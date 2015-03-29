@@ -53,6 +53,10 @@ Route::group(array('before' => 'auth'), function() {
     Route::get('observaciones/lista-observacion',['as'=>'lista-observacion','uses'=>'ObservacionController@index']);
     
     
+    /**
+     * Test
+     */
+    Route::get('test', 'TestController@index');
     
     Route::controller('users', 'UserController');
     Route::controller('generales', 'GeneralController');

@@ -10,8 +10,8 @@ class TestController extends \BaseController {
 	 */
 	public function index()
 	{
-		$test = new ClaroController;
-                echo json_encode($test->dataPoduct());
+		$test = Empresa::find(1);
+                echo json_encode($test->productos);
 	}
 
 	/**
