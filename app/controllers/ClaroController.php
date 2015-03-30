@@ -82,7 +82,6 @@ class ClaroController extends \BaseController {
     public function importarClaro($id) {
 
         $data = Empresa::find($id);
-        echo json_encode($data); die;
         $claro = $data->Productos()->lists('name', 'id');
         array_unshift($claro, ' --- Seleccione un Prodcuto --- ');
         $mes = $this->Mes();
