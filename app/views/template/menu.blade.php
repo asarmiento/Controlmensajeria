@@ -68,8 +68,8 @@
             <li class="dropdown">
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Usuarios<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{ HTML::link('/users/add', 'Agregar Usuario') }}</a></li>
-                    <li><a>{{ HTML::link('/users', 'Ver Usuarios') }}</a></li> 
+                    <li><a href="{{ route('lista-users') }}">Ver Usuarios</a></li>
+                    <li><a  href="{{ route('create-users') }}">Registrar Usuario</a></li> 
                 </ul>
             </li>
             <li class="dropdown">

@@ -23,6 +23,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $hidden = array('password', 'remember_token');
 
+  public function tiposUsers(){
+    return $this->belongsTo('TypeUser','type_users_id','id');
+  }
 	public $validator;
         public function nombre_completo(){
             return $this->name.' '.$this->last;

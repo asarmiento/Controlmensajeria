@@ -1,34 +1,21 @@
 <?php
 
-class TestController extends \BaseController {
+class ProductoController extends \BaseController {
 
 	/**
 	 * Display a listing of the resource.
-	 * GET /test
+	 * GET /producto
 	 *
 	 * @return Response
 	 */
 	public function index()
 	{
-		//$test = user::find(14);
-        //        echo json_encode($test->tiposUsers->name);
-
-         $separador = explode('-', ('ciclo-C-48'));
-        
-        $nameProducto = ucwords($separador[0]).' '.ucwords($separador[1]).'-'.$separador[2];
-
-       $producto = Producto::where('name','=',$nameProducto)->get();
-
-       if($producto->isEmpty()):
-            return "No se encontro el producto que intenta buscar";
-        endif;
-
-        return $producto[0]->id;
+		//
 	}
 
 	/**
 	 * Show the form for creating a new resource.
-	 * GET /test/create
+	 * GET /producto/create
 	 *
 	 * @return Response
 	 */
@@ -39,7 +26,7 @@ class TestController extends \BaseController {
 
 	/**
 	 * Store a newly created resource in storage.
-	 * POST /test
+	 * POST /producto
 	 *
 	 * @return Response
 	 */
@@ -50,7 +37,7 @@ class TestController extends \BaseController {
 
 	/**
 	 * Display the specified resource.
-	 * GET /test/{id}
+	 * GET /producto/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -62,7 +49,7 @@ class TestController extends \BaseController {
 
 	/**
 	 * Show the form for editing the specified resource.
-	 * GET /test/{id}/edit
+	 * GET /producto/{id}/edit
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -74,7 +61,7 @@ class TestController extends \BaseController {
 
 	/**
 	 * Update the specified resource in storage.
-	 * PUT /test/{id}
+	 * PUT /producto/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -86,7 +73,7 @@ class TestController extends \BaseController {
 
 	/**
 	 * Remove the specified resource from storage.
-	 * DELETE /test/{id}
+	 * DELETE /producto/{id}
 	 *
 	 * @param  int  $id
 	 * @return Response
@@ -95,5 +82,20 @@ class TestController extends \BaseController {
 	{
 		//
 	}
+
+	public function getProduct($name){
+
+        $separador = explode('-', ($name));
+        
+        $nameProducto = ucwords($separador[0]).' '.ucwords($separador[1]).'-'.$separador[2];
+
+       $producto = Producto::where('name','=',$nameProducto)->get();
+
+       if($producto->isEmpty()):
+            return "No se encontro el producto que intenta buscar";
+        endif;
+
+        return $producto[0]->id;
+    }
 
 }

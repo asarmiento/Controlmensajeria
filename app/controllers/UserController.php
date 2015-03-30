@@ -2,14 +2,14 @@
 
 class UserController extends BaseController{
 
-	public function getIndex(){
+	public function index(){
 
-		$Users= User::all();
-		return View::make('users.index',array('users'=>$Users));
+		$users= User::all();
+		return View::make('users.index',compact('users'));
 	
 	}
 
-	public function getAdd(){
+	public function create(){
 		return View::make('users.register');
 	}
 
@@ -35,7 +35,7 @@ class UserController extends BaseController{
 		return Redirect::to('users/add')->withErrors($User->validator)->withInput();
 	}
 
-	public function getEdit($id){
+	public function edit($id){
 
 		$User = User::find($id);
 
@@ -83,6 +83,12 @@ class UserController extends BaseController{
 
 		return Redirect::action('UserController@getIndex')->with('message', 'El usuario no se ha podido eliminar');
 
+	}
+	/**
+	* Generacion de Nombre completo
+	*/
+	public function nameComplete(){
+		return $this->name.' '.$this->last;
 	}
 
 }

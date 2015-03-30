@@ -87,6 +87,7 @@ class ClaroController extends \BaseController {
         $mes = $this->Mes();
         return View::make('claro.importar', compact('claro', 'mes'));
     }
+    
 
     public function dataProduct(){
         $empresa = Empresa::find(1);

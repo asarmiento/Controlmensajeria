@@ -35,7 +35,8 @@ Route::group(array('before' => 'auth'), function() {
         echo "OK";
     });*/
     Route::get('claro', ['as' => 'claro', 'uses' => 'ClaroController@index']);
-    Route::get('claro/{name}', ['as'=> 'producto_claro', 'uses'=>'ClaroController@dataProduct']);
+    Route::get('claro/{name}', ['as'=> 'producto_claro', 'uses'=>'ProductoController@getProduct']);
+    Route::get('claro/{name}/{date}', ['as' => 'data_product', 'uses' => 'ClaroController@dataProduct']);
     Route::get('claro/importar-ciclo/{id}',['as'=>'importar-ciclo','uses'=>'ClaroController@importarClaro']);
     Route::post('claro/importar-ciclo',['as'=>'save-ciclo','uses'=>'ClaroController@importarExcelClaro']);
     
@@ -60,8 +61,13 @@ Route::group(array('before' => 'auth'), function() {
      * Routes Obsevaciones
      */
     Route::get('observaciones/lista-observacion',['as'=>'lista-observacion','uses'=>'ObservacionController@index']);
-    
-    
+    /**
+    * Routes usuarios
+    */
+    Route::get('usuarios',['as'=>'lista-users','uses'=>'UserController@index']);
+    Route::get('usuarios/registrar-usuario/{id}',['as'=>'create-users','uses'=>'UserController@create']);
+    Route::get('usuarios/editar-usuario/{id}',['as'=>'edit-users','uses'=>'UserController@edit']);
+    Route::get('usuarios/eliminar-usuario',['as'=>'delete-users','uses'=>'UserController@destroy']);
     /**
      * Test
      */

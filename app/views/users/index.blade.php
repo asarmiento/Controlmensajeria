@@ -1,26 +1,26 @@
 @extends('template.main')
 
-@section('container')
+@section('content')
 	<center><h1><span class="glyphicon glyphicon-user"></span>&nbsp;Ver usuarios</h1></center>
 		<div class="table-responsive">
 		<table class="table table-stripped">
         <thead>
          <tr>
-          <th>Nombre</th>
-          <th>Apellido</th>
+          <th>Nombre Completo</th>
           <th>Email</th>
-          <th></th>
-          <th></th>
+          <th>Tipo Usuario</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
          </tr>
         </thead>
         <tbody>
          @foreach ($users as $user)
           <tr>
-           <td>{{ $user->name }}</td>
-           <td>{{ $user->lastname }}</td>
+           <td>{{ $user->nameComplete }}</td>
            <td>{{ $user->email }}</td>
-			<td><a class="btn btn-danger" href="{{URL::action('UserController@getDelete',$user->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
-			<td><a class="btn btn-warning" href="{{URL::action('UserController@getEdit',$user->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
+           <td>{{ $user->tiposUsers->name }}</td>
+			<td><a class="btn btn-danger" href="{{Route('edit-users',$user->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
+			<td><a class="btn btn-warning" href="{{Route('delete-users',$user->id)}}"><span class="glyphicon glyphicon-pencil"></span></a></td>
           </tr>
          @endforeach
         </tbody>
