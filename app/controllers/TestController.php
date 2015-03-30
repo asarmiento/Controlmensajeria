@@ -11,7 +11,7 @@ class TestController extends \BaseController {
 	public function index()
 	{
 		$test = Empresa::find(1);
-                echo json_encode($test->productos);
+                echo json_encode($test->productos[0]->name);
 	}
 
 	/**

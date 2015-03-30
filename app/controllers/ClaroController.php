@@ -9,8 +9,8 @@ class ClaroController extends \BaseController {
      *
      * @return Response
      */
-    public function index() {
-        //
+    public function Index() {
+         return View::make('claro.index');
     }
 
     /**
@@ -20,7 +20,7 @@ class ClaroController extends \BaseController {
      * @return Response
      */
     public function create() {
-        //
+       
     }
 
     /**
@@ -88,7 +88,7 @@ class ClaroController extends \BaseController {
      */
    public function ListaDatosEmpresas() {
         $datosEmpresas = DatosEmpresa::paginate(100);
-        return View::make('claros.listaDatosEmpresas', compact('datosEmpresas'));
+        return View::make('claro.listaDatosEmpresas', compact('datosEmpresas'));
     }
     /**
      * aqui ejecutamos todos los metodos para agregar un nuevo archivo o reemplazarlo
@@ -119,7 +119,6 @@ class ClaroController extends \BaseController {
 
         $datos = DatosEmpresa::where('historials_id', '=', $historial)->delete();
 
-        //   dd($data);
         foreach ($data AS $dataExcel):
             $datos_empresas = new DatosEmpresa;
             $datos_empresas->barra = null;

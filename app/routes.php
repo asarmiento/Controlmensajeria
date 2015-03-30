@@ -31,25 +31,34 @@ Route::group(array('before' => 'auth'), function() {
      * Routes Claro
      */
     
+    /*Route::get('claro', function(){
+        echo "OK";
+    });*/
+    Route::get('claro', ['uses' => 'ClaroController@index']);
+    Route::get('claro/{name}', ['as'=> 'producto_claro', 'uses'=>'ClaroController@product']);
 
-    Route::get('claro', ['as'=> 'claro', 'uses'=>'ClaroController@index']);
-    Route::get('claro/{name}', ['as'=> 'producto_claro', 'uses'=>'ClaroController@getProduct']);
-
-    /*Ruta para importar archivos de CLARO */
+    /* Routes Empresas-CLARO */
     Route::get('claro/importar-ciclo/{id}',['as'=>'importar-ciclo','uses'=>'EmpresasController@importarClaro']);
     Route::post('claro/importar-ciclo',['as'=>'save-ciclo','uses'=>'EmpresasController@SaveClaro']);
     Route::post('claro/scanear-ciclo',['as'=>'scanear-ciclo','uses'=>'EmpresasController@scanearCiclo']);
     Route::get('claro/ciclo','EmpresasController@ListaDatosEmpresas');
-   // Route::get('claro/ciclo',['as'=>'claros-listaDatosEmpresas','EmpresasController@ListaDatosEmpresas']);
-
+    /**
+     *  Routes Historial
+     */
     Route::get('historial-productos/{id}',['as'=>'historial-productos','uses'=>'HistorialsController@index']);
     Route::put('historial-delete/{id}',['as'=>'historial-delete','uses'=>'HistorialsController@destroy']);
     Route::get('descarga-productos/{id}',['as'=>'descarga-productos','uses'=>'HistorialsController@descargasProducto']);
+    /**
+     *  Routes Empleados
+     */
     Route::get('empleados/registrar-empleados',['as'=>'registrar-empleados','uses'=>'EmpleadoController@create']);
     Route::get('empleados',['as'=>'ver-empleados','uses'=>'EmpleadoController@index']);
     Route::post('empleados/guardar-empleados',['as'=>'guardar-empleados','uses'=>'EmpleadoController@store']);
     Route::get('empleados/editar-empleados/{id}',['as'=>'editar-empleados','uses'=>'EmpleadoController@edit']);
     Route::post('empleados/update-empleados/{id}',['as'=>'update-empleados','uses'=>'EmpleadoController@update']);
+    /**
+     * Routes Obsevaciones
+     */
     Route::get('observaciones/lista-observacion',['as'=>'lista-observacion','uses'=>'ObservacionController@index']);
     
     
@@ -57,51 +66,8 @@ Route::group(array('before' => 'auth'), function() {
      * Test
      */
     Route::get('test', 'TestController@index');
-    
-    Route::controller('users', 'UserController');
-    Route::controller('generales', 'GeneralController');
-    Route::controller('columbus', 'ColumbusController');
-    Route::controller('occidentes', 'OccidenteController');
-    Route::controller('atlantidads', 'AtlantidadController');
-    Route::controller('ficohsas', 'FicohsaController');
-    Route::controller('continentals', 'ContinentalController');
-    Route::controller('hablemosclaros', 'HablemosclaroController');
-    Route::controller('claros','ClaroController');
-    Route::controller('mensajeros','MensajeroController');
+ 
     Route::controller('setup','SetupController');
     // Esta ruta nos servirÃ¡ para cerrar sesiÃ³n.
     Route::get('logout', 'AuthController@logOut');
 });
-
-Route::get('configuracion/crear-estado', 'EstadoController@create');
-
-
-use Anouar\Fpdf\Fpdf as baseFpdf;
-class PDF extends baseFpdf
-{
-// Page header
-function Header()
-{
-    // Logo
-     $this->Image('http://system.elcorso.hn/public/img/logo-corso_pdf.jpg',10,6,30);
-    // Arial bold 15
-    $this->SetFont('Arial','B',15);
-    // Move to the right
-   // Title
-    $this->Cell(0,10,'Reporte de Entrega',0,0,'C');
-    // Line break
-    $this->Ln(15);
-}
-
-// Page footer
-function Footer()
-{
-    // Position at 1.5 cm from bottom
-    $this->SetY(-15);
-    // Arial italic 8
-    $this->SetFont('Arial','I',8);
-    // Page number
-    $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
-}
-}
-

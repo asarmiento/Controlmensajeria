@@ -11,16 +11,9 @@
  *
  * @author Sistemas Amigables
  */
-class ClaroController extends BaseController {
+class ClaroOldController extends BaseController {
 
-    //put your code here
-    public function getIndex() {
 
-        return View::make('claros.index');
-    }
-    public function importar(){
-        return View::make('claros.importar');
-    }
 
     public function getC48() {
         $data = DB::table('ciclos')->where('id', 7)->get();

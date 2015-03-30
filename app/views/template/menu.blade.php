@@ -7,53 +7,53 @@
             <li class="dropdown">
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Banco Occidente<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{ HTML::link('/occidentes/estadocuenta', 'Estado Cuenta') }}</a></li>
-                    <li><a>{{ HTML::link('/occidentes/', 'Cheques Devueltos') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Estado Cuenta') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Cheques Devueltos') }}</a></li>
                 </ul>
             </li>           
             <li class="dropdown">
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Banco Continental<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{  HTML::link('/continentals/estadocuenta', 'Estado Cuenta de Cheques') }}</a></li>
-                    <li><a>{{ HTML::link('/continentals/estadocuentatarjetas', 'Estados de Cuenta Tarjetas') }}</a></li>
-                    <li><a>{{ HTML::link('/continentals/notasdebito', 'Notas de debito') }}</a></li>
+                    <li><a>{{  HTML::link('#', 'Estado Cuenta de Cheques') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Estados de Cuenta Tarjetas') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Notas de debito') }}</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Banco Atlantidad<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{ HTML::link('/atlantidads/estadocuentas', 'Estados de Cuenta') }}</a></li>
-                    <li><a>{{ HTML::link('/atlantidads/', 'Tarjetas de Credito') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Estados de Cuenta') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Tarjetas de Credito') }}</a></li>
                 </ul>
             </li>          
             <li class="dropdown">
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Editorial Hablemos Claro<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{ HTML::link('/hablemosclaros/hablemosclaro', 'Revista Hablemos Claro') }}</a></li>
-                    <li><a>{{ HTML::link('/hablemosclaros/asdeportiva', 'Revista AS Deportiva') }}</a></li>
-                    <li><a>{{ HTML::link('/hablemosclaros/cromos', 'Revista Cromos') }}</a></li>
-                    <li><a>{{ HTML::link('/hablemosclaros/hablemosclarofinanciera', 'Revista Hablemos Claro Financiera') }}</a></li>
-                    <li><a>{{ HTML::link('/hablemosclaros/cometo', 'Revista  Come To Honduras') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Revista Hablemos Claro') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Revista AS Deportiva') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Revista Cromos') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Revista Hablemos Claro Financiera') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Revista  Come To Honduras') }}</a></li>
                 </ul>
             </li>          
             <li class="dropdown">   
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Banco Ficohsa<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{ HTML::link('/ficohsas/estadocuentalps', 'Estados de Cuenta en Lempiras') }}</a></li>
-                    <li><a>{{ HTML::link('/ficohsas/estadocuentadolar', 'Estados de Cuenta en Dolares') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Estados de Cuenta en Lempiras') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Estados de Cuenta en Dolares') }}</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Alcance<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{ HTML::link('/users/add', 'Agregar Usuario') }}</a></li>
-                    <li><a>{{ HTML::link('/users', 'Ver Usuarios') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Agregar Usuario') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Ver Usuarios') }}</a></li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="boton-cliente" data-toggle="dropdown">Columbus<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a>{{ HTML::link('/columbus/', 'Estados de Cuenta') }}</a></li>
+                    <li><a>{{ HTML::link('#', 'Estados de Cuenta') }}</a></li>
                 </ul>
             </li>
             <li class="dropdown">
