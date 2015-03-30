@@ -34,7 +34,7 @@ Route::group(array('before' => 'auth'), function() {
     /*Route::get('claro', function(){
         echo "OK";
     });*/
-    Route::get('claro', ['uses' => 'ClaroController@index']);
+    Route::get('claro', ['as' => 'claro', 'uses' => 'ClaroController@index']);
     Route::get('claro/{name}', ['as'=> 'producto_claro', 'uses'=>'ClaroController@product']);
 
     /* Routes Empresas-CLARO */
