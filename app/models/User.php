@@ -60,5 +60,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return false;
     }
 
-
+/**
+  * Generacion de Nombre completo
+  */
+  public function nameComplete(){
+    return $this->name.' '.$this->last;
+  }
 }

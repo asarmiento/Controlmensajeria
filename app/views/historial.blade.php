@@ -8,10 +8,10 @@
     $(document).ready(function(){ $('#newestado').focus();});
 </script>
 @stop
-@section('container') 
+@section('content') 
 <div class="menu-inicio">
 
-		<div CLASS="titulo-bienvenido">Historial de Ciclos <img src="http://sistema.elcorso.hn/asset/img/logosclientes/logo-claro.png"></div>
+		<div CLASS="titulo-bienvenido">Historial de Ciclos <img src="http://systema.elcorso.hn/img/logo-claro.png"></div>
  <table class="table table-striped">
                     <thead>
                     <th>Nombre Producto</th>

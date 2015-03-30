@@ -8,7 +8,7 @@
 @section('title')
 <h1 class="text-lowercase">Mensajeros</h1>
 @stop
-@section('container') 
+@section('content') 
 <div>
     @if ($errors->any())
     <div class="alert alert-danger">

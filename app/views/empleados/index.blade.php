@@ -8,7 +8,7 @@
 @section('title')
 <h1 class="text-lowercase">Mensajeros</h1>
 @stop
-@section('container') 
+@section('content') 
 
 <center><h2><span class="glyphicon glyphicon-list-alt"><br>Agregar Mensajeros</span></h2></center>
 <hr>

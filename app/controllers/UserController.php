@@ -84,11 +84,6 @@ class UserController extends BaseController{
 		return Redirect::action('UserController@getIndex')->with('message', 'El usuario no se ha podido eliminar');
 
 	}
-	/**
-	* Generacion de Nombre completo
-	*/
-	public function nameComplete(){
-		return $this->name.' '.$this->last;
-	}
+	
 
 }

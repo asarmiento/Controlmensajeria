@@ -8,7 +8,7 @@
 @section('title')
 <h1 class="text-lowercase"><?php echo utf8_encode('lista de Observaciones'); ?></h1>
 @stop
-@section('container')
+@section('content')
     <table class="table">
         <thead>
             <tr>

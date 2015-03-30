@@ -16,7 +16,7 @@
         <tbody>
          @foreach ($users as $user)
           <tr>
-           <td>{{ $user->nameComplete }}</td>
+           <td>{{ $user->nameComplete() }}</td>
            <td>{{ $user->email }}</td>
            <td>{{ $user->tiposUsers->name }}</td>
 			<td><a class="btn btn-danger" href="{{Route('edit-users',$user->id)}}"><span class="glyphicon glyphicon-trash"></span></a></td>
