@@ -76,16 +76,7 @@ class EmpresasController extends \BaseController {
 //
     }
 
-    /**/
-
-    public function importarClaro($id) {
-
-        $data = Empresa::find($id);
-        $claro = $data->Productos()->lists('name', 'id');
-        array_unshift($claro, ' --- Seleccione un Prodcuto --- ');
-        $mes = $this->Mes();
-        return View::make('claros.importar', compact('claro', 'mes'));
-    }
+   
 
     /**
      * 

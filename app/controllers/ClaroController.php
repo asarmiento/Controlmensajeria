@@ -76,10 +76,21 @@ class ClaroController extends \BaseController {
     public function destroy($id) {
         //
     }
-    
-    public function dataPoduct(){
-        $empresa = Empresas::find(1);
-        return View::make('claro.product',  compact('empresa'));
+     /**
+     */
+
+    public function importarClaro($id) {
+
+        $data = Empresa::find($id);
+        $claro = $data->Productos()->lists('name', 'id');
+        array_unshift($claro, ' --- Seleccione un Prodcuto --- ');
+        $mes = $this->Mes();
+        return View::make('claro.importar', compact('claro', 'mes'));
+    }
+
+    public function dataProduct(){
+        $empresa = Empresa::find(1);
+        return View::make('claro.productos',  compact('empresa'));
     }
 
     /**

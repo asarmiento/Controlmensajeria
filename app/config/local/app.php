@@ -16,7 +16,7 @@ return array(
 	'debug' => true,
 
 	'providers' => array(
-                'Anouar\Fpdf\FpdfServiceProvider',    
+          //      'Anouar\Fpdf\FpdfServiceProvider',    
                 //'Thujohn\Pdf\PdfServiceProvider',
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',

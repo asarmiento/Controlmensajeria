@@ -94,7 +94,7 @@ return array(
 	*/
 
 	'providers' => array(
-                'Anouar\Fpdf\FpdfServiceProvider',    
+          //      'Anouar\Fpdf\FpdfServiceProvider',    
                 //'Thujohn\Pdf\PdfServiceProvider',
 		'Illuminate\Foundation\Providers\ArtisanServiceProvider',
 		'Illuminate\Auth\AuthServiceProvider',
@@ -152,7 +152,7 @@ return array(
 	*/
 
 	'aliases' => array(
-                'Fpdf'    => 'Anouar\Fpdf\Facades\Fpdf',
+        //        'Fpdf'    => 'Anouar\Fpdf\Facades\Fpdf',
                 //'PDF'             => 'Thujohn\Pdf\PdfFacade',
 		'App'             => 'Illuminate\Support\Facades\App',
 		'Artisan'         => 'Illuminate\Support\Facades\Artisan',

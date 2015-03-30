@@ -35,11 +35,11 @@ Route::group(array('before' => 'auth'), function() {
         echo "OK";
     });*/
     Route::get('claro', ['as' => 'claro', 'uses' => 'ClaroController@index']);
-    Route::get('claro/{name}', ['as'=> 'producto_claro', 'uses'=>'ClaroController@product']);
-
+    Route::get('claro/{name}', ['as'=> 'producto_claro', 'uses'=>'ClaroController@dataProduct']);
+    Route::get('claro/importar-ciclo/{id}',['as'=>'importar-ciclo','uses'=>'ClaroController@importarClaro']);
+    Route::post('claro/importar-ciclo',['as'=>'save-ciclo','uses'=>'ClaroController@importarExcelClaro']);
+    
     /* Routes Empresas-CLARO */
-    Route::get('claro/importar-ciclo/{id}',['as'=>'importar-ciclo','uses'=>'EmpresasController@importarClaro']);
-    Route::post('claro/importar-ciclo',['as'=>'save-ciclo','uses'=>'EmpresasController@SaveClaro']);
     Route::post('claro/scanear-ciclo',['as'=>'scanear-ciclo','uses'=>'EmpresasController@scanearCiclo']);
     Route::get('claro/ciclo','EmpresasController@ListaDatosEmpresas');
     /**

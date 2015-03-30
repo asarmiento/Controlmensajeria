@@ -11,7 +11,7 @@
 <h1 class="text-lowercase"></h1>
 @stop
 
-@section('container') 
+@section('content') 
 
 <center><h2><span class="glyphicon glyphicon-list-alt"><br>Importar Ciclos <img src="../logosclientes/logo-claro.png"></span></h2></center>
 <hr>
