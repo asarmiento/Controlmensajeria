@@ -91,7 +91,7 @@ class ClaroController extends \BaseController {
 
     public function dataProduct(){
         $empresa = Empresa::find(1);
-        return View::make('claro.productos',  compact('empresa'));
+      //  return View::make('claro.productos',  compact('empresa'));
     }
 
     /**

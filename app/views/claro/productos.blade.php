@@ -8,7 +8,7 @@
     $(document).ready(function(){ $('#newestado').focus();});
 </script>
 @stop
-@section('container') 
+@section('content') 
 <div class="menu-inicio">
 
 		<div CLASS="titulo-bienvenido">Lista de Productos</div>
