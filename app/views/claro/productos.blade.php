@@ -15,17 +15,17 @@
                
                 <table>
                     <thead>
-                    <th>Nº</th>
+                    <th>Nï¿½</th>
                     <th>Productos</th>
                     </thead>
-                     @foreach($ciclos AS $datos)
+                     
                     <tbody>
                         <tr>
-                    <td>{{$datos->id}}</td>
-                    <td>{{$datos->name}}</td>
+                    <td></td>
+                    <td></td>
                     </tr>
                     </tbody>
-                    @endforeach
+                  
                 </table>	
 </div>
 @stop
